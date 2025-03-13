@@ -51,8 +51,81 @@ brython_div1 &lt;= html.BR()
 brython_div1 &lt;= "7. " + html.A("41223158", href="https://mdecd2025.github.io/hw-41223158/")+ html.A("(repo)", href="https://github.com/mdecd2025/hw-41223158")
 </pre>
 <p><span>1. </span><a href="https://mdecd2025.github.io/2a-ag4/">2a-ag4</a><a href="https://github.com/mdecd2025/2a-ag4">(repo)</a><br/><span>2. </span><a href="https://mdecd2025.github.io/hw-zhe41223118/">41223118</a><a href="https://github.com/mdecd2025/hw-zhe41223118">(repo)</a><br/><span>3. </span><a href="https://mdecd2025.github.io/hw-41223122/">41223122</a><a href="https://github.com/mdecd2025/hw-41223122">(repo)</a><br/><span>4. </span><a href="https://mdecd2025.github.io/hw-41223131/">41223131</a><a href="https://github.com/mdecd2025/hw-41223131">(repo)</a><br/><span>5. </span><a href="https://mdecd2025.github.io/hw-41223134/">41223134</a><a href="https://github.com/mdecd2025/hw-41223134">(repo)</a><br/><span>6. </span><a href="https://mdecd2025.github.io/hw-41223136/">41223136</a><a href="https://github.com/mdecd2025/hw-41223136">(repo)</a><br/><span>7. </span><a href="https://mdecd2025.github.io/hw-41223158/">41223158</a><a href="https://github.com/mdecd2025/hw-41223158">(repo)</a></p>
-<p><br/><br/></p>
-<p></p><h1>Homework</h1>
+<p><br/><br/><br/></p>
+<h2>w3</h2>
+<h4>用程式計算出班上與別班未分組名單，已本班甲班2a為主。</h4>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">import os
+from github import Github
+
+# 設定 GitHub Token 與組織名稱
+GITHUB_TOKEN = 'your_token'  # 🚨 請換成你的 GitHub Token
+ORG_NAME = 'mdecd2025'
+PROXY = 'http://p4.cycu.org:3128'
+
+# 班上所有學號
+all_students = {
+    "40932134", "41023105", "41023109", "41023111", "41023128", "41023137", "41023150", "41023220", "41023222",
+    "41223101", "41223102", "41223103", "41223104", "41223105", "41223106", "41223107", "41223110", "41223111",
+    "41223112", "41223113", "41223114", "41223116", "41223117", "41223118", "41223119", "41223120", "41223121",
+    "41223122", "41223123", "41223124", "41223125", "41223126", "41223129", "41223130", "41223131", "41223132",
+    "41223133", "41223134", "41223136", "41223137", "41223138", "41223140", "41223141", "41223143", "41223144",
+    "41223146", "41223147", "41223148", "41223149", "41223150", "41223152", "41223153", "41223154", "41223156",
+    "41223157", "41223158", "41271125", "41271131", "41271146", "41271158"
+}
+
+def get_grouped_members(org_name, token, proxy):
+    """從 GitHub 獲取已分組的成員"""
+    os.environ['http_proxy'] = proxy
+    os.environ['https_proxy'] = proxy
+
+    g = Github(token)
+    grouped_members = set()
+
+    try:
+        org = g.get_organization(org_name)
+        teams = org.get_teams()
+
+        for team in teams:
+            if team.name.lower().startswith('g'):
+                members = team.get_members()
+                for member in members:
+                    grouped_members.add(member.login)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    return grouped_members
+
+if __name__ == "__main__":
+    # 取得 GitHub 上的已分組成員
+    grouped_students = get_grouped_members(ORG_NAME, GITHUB_TOKEN, PROXY)
+
+    # 計算未分組的學號
+    ungrouped_students = sorted(all_students - grouped_students)
+
+    # 📌 只輸出未分組學號
+    for student in ungrouped_students:
+        print(student)
+</pre>
+<div class="line number1 index0 alt2">
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">未分組學號：
+41023109 | 未分組
+41023220 | 未分組
+41023222 | 未分組
+41223111 | 未分組
+41223112 | 未分組
+41223117 | 未分組
+41223121 | 未分組
+41223122 | 未分組
+41223123 | 未分組
+41223124 | 未分組
+41223126 | 未分組
+41223130 | 未分組
+41223131 | 未分組
+41223148 | 未分組
+41223149 | 未分組
+</pre>
+<code class="html plain"><br/></code></div><h1>Homework</h1>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/qdga364f-9k" width="560"></iframe></p>
 <p>作業 (30%)</p>
 <p>HW1 (5%): <span style="background-color: #ffff00;">建立由 Box 組成的平面四連桿機構 Webots 模擬場景</span></p>
