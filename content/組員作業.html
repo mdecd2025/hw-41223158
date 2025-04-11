@@ -2,7 +2,7 @@
         <head>
         <title>cd_hw</title>
         <meta charset="utf-8">
-<meta property="head" content="H1">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -142,15 +142,206 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Exam3 << <a href='Exam3.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython<br /><h1>Final</h1>
-<p><span>期末協同專案執行過程影片、簡報與 PDf 報告檔案 (六人一組) (30%)</span></p>
-<p><span>題目: <span style="background-color: #ccffcc;">Webots 動態投籃模擬系統的協同設計</span></span></p>
-<p><span>說明: </span></p>
-<p style="padding-left: 30px;"><span>籃框架被配置在一定範圍內, 可隨機慢速前進、後退及左右擺動, 投籃機構系統帶有一定數量的籃球, 被配置在可自由移動的輪車上.</span></p>
-<p style="padding-left: 30px;"><span>操作者可利用鍵盤特定按鍵控制投籃輪車的移動並發射投籃, 每投出一球後系統透過記分板進行計分, 並由送球機構進行補球或移動輪車取球, 遊戲可進行至全部數量籃球投完為止.</span></p>
-<p>請將期末協同專案執行過程、內容與心得, 製作成影片，配合字幕上傳至 Youtube 後嵌入各階段的期末報告頁面中.</p>
-<p>影片標題: <span style="background-color: #ffff00;">國立虎尾科技大學 - 機械設計工程系 - cd2025 期末報告 - 學員學號 - 各階段影片主題<br/></span></p>
-<br />Exam3 << <a href='Exam3.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
+    <div id="tipue_search_content">w5 << <a href='w5.html'>Previous</a> <a href='Homework.html'>Next</a> >> Homework<br /><h1>組員作業</h1>
+<h4><br/>請詳細說明如何採手動方式在 Webots 建立<span>桌上籃球遊戲機模擬系統的敘述。</span></h4>
+<h4><span style="background-color: #00ffff;">步驟 1：創建新世界</span></h4>
+<ol>
+<li>
+<p><strong>啟動 Webots</strong>：</p>
+<ul>
+<li>打開 Webots 軟體，並進入主介面。</li>
+</ul>
+</li>
+<li>
+<p><strong>創建新世界</strong>：</p>
+<ul>
+<li>在 Webots 的主畫面中，選擇 <code inline="">File</code> &gt; <code inline="">New World</code>，這會創建一個名為 <code inline="">untitled.wbt</code> 的新世界。</li>
+<li>新創建的世界會有一個預設的地面，並且已經設定了一些基本參數。</li>
+</ul>
+</li>
+</ol>
+<h4><span style="background-color: #00ffff;">步驟 2：設置桌面結構</span></h4>
+<ol>
+<li>
+<p><strong>新增桌子（Solid）</strong>：</p>
+<ul>
+<li>在 <code inline="">Scene Tree</code> 中，右鍵點選 <code inline="">WorldInfo</code> 節點，選擇 <code inline="">Add</code> &gt; <code inline="">Solid</code>，會在場景中新增一個 <code inline="">Solid</code> 節點。這個 <code inline="">Solid</code> 節點將代表你的桌子。</li>
+</ul>
+</li>
+<li>
+<p><strong>新增桌面的形狀（Shape）</strong>：</p>
+<ul>
+<li>在 <code inline="">Solid</code> 節點下，右鍵點選 <code inline="">Solid</code> 節點，選擇 <code inline="">Add</code> &gt; <code inline="">Shape</code> &gt; <code inline="">Box</code>。這將創建一個長方體來代表桌面。</li>
+</ul>
+</li>
+<li>
+<p><strong>設定桌子尺寸</strong>：</p>
+<ul>
+<li>點選 <code inline="">Box</code> 節點，然後在右側的屬性面板中設定 <code inline="">size</code> 參數來調整桌子的大小。假設我們的桌子尺寸是 2 米長，1 米寬，0.1 米高，設定如下：</li>
+</ul>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">size 2 0.1 1</pre>
+</li>
+<li>
+<p><strong>設置桌子的顏色</strong>：</p>
+<ul>
+<li>點選 <code inline="">Solid</code> 節點，右鍵選擇 <code inline="">Appearance</code>，然後設定材質的顏色。你可以選擇木色或其他顏色來模擬桌子表面。</li>
+</ul>
+</li>
+</ol>
+<h4><span style="background-color: #00ffff;">步驟 3：創建籃球框</span></h4>
+<ol>
+<li>
+<p><strong>新增籃框（Solid）</strong>：</p>
+<ul>
+<li>在 <code inline="">Scene Tree</code> 中，右鍵點選 <code inline="">WorldInfo</code> 節點，選擇 <code inline="">Add</code> &gt; <code inline="">Solid</code>，再右鍵選擇新創建的 <code inline="">Solid</code> 節點，選擇 <code inline="">Add</code> &gt; <code inline="">Shape</code> &gt; <code inline="">Cylinder</code>。這將創建一個圓柱形的籃框。</li>
+</ul>
+</li>
+<li>
+<p><strong>設置籃框的大小與位置</strong>：</p>
+<ul>
+<li>點選 <code inline="">Cylinder</code> 節點，並在右側屬性面板中設定 <code inline="">radius</code> 和 <code inline="">height</code>。例如：</li>
+</ul>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">radius 0.2
+height 0.05</pre>
+<ul>
+<li>設定 <code inline="">translation</code> 來調整籃框的位置。假設我們要把籃框放置在桌面上方，並放置在桌子的遠端。設定如下：</li>
+</ul>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">translation 0 0.6 -0.5</pre>
+<p>這樣，籃框就會位於桌子的上方，距離桌面的高度為 0.6 米。</p>
+</li>
+</ol>
+<h4><span style="background-color: #00ffff;">步驟 4：創建籃球</span></h4>
+<ol>
+<li>
+<p><strong>新增籃球（Solid）</strong>：</p>
+<ul>
+<li>在 <code inline="">Scene Tree</code> 中，右鍵點選 <code inline="">WorldInfo</code> 節點，選擇 <code inline="">Add</code> &gt; <code inline="">Solid</code>，然後右鍵選擇新創建的 <code inline="">Solid</code> 節點，選擇 <code inline="">Add</code> &gt; <code inline="">Shape</code> &gt; <code inline="">Sphere</code>。這將創建一個球形的籃球。</li>
+</ul>
+</li>
+<li>
+<p><strong>設定籃球大小與顏色</strong>：</p>
+<ul>
+<li>點選 <code inline="">Sphere</code> 節點，在右側屬性面板中設定 <code inline="">radius</code>，例如將 <code inline="">radius</code> 設定為 0.1 米，代表籃球的直徑為 20 公分。</li>
+</ul>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">radius 0.1</pre>
+<ul>
+<li>設定顏色，為了讓籃球看起來像真實的籃球，可以選擇橙色。這樣籃球就會顯示為橙色。</li>
+</ul>
+</li>
+<li>
+<p><strong>設定籃球的位置</strong>：</p>
+<ul>
+<li>設定 <code inline="">translation</code>，將籃球放置於桌面上方，距離桌面大約 0.2 米。</li>
+</ul>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">translation 0 0.2 -0.5</pre>
+</li>
+</ol>
+<h4><span style="background-color: #00ffff;">步驟 5：設置物理屬性</span></h4>
+<ol>
+<li>
+<h4><strong>設定桌子與籃框的物理屬性</strong>：</h4>
+<ul>
+<li>
+<h4>桌子和籃框不需要太多的彈性，但需要摩擦力，這樣物體才能有真實的接觸效果。</h4>
+</li>
+</ul>
+<h4>在 <code inline="">Solid</code> 節點中添加物理屬性設定：</h4>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">Physics { 
+        density 1.0 
+        friction 0.9 
+        bounce 0.0 # 桌子和籃框不會反彈 
+}</pre>
+<h4><br/><br/></h4>
+</li>
+<li>
+<p><strong>設定籃球的物理屬性</strong>：</p>
+<ul>
+<li>籃球需要較高的彈性，以便它能夠反彈。可以設置以下屬性：</li>
+</ul>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">Physics {
+    density 0.5
+    friction 0.3
+    bounce 0.7  # 籃球有較高的反彈
+}</pre>
+</li>
+</ol>
+<h4><span style="background-color: #00ffff;">步驟 6：創建控制器</span></h4>
+<ol>
+<li>
+<h4><strong>創建 Python 控制器程式</strong>：</h4>
+<ul>
+<li>
+<h4>在 Webots 中，你需要使用控制器來控制物體的行為，例如投籃等。創建一個新的 Python 控制器，並將其命名為 <code inline="">basketball_controller.py</code>。</h4>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>編寫控制器邏輯</strong>：</p>
+<ul>
+<li>控制器的主要目的是監控籃球的運動，並在籃球進入籃框時進行計分。下面是一個簡單的範例程式，會檢查籃球是否進入籃框範圍。</li>
+<li>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">範例程式碼：
+
+from controller import Robot
+
+# 創建 robot 物件來控制 Webots 模擬
+robot = Robot()
+timestep = int(robot.getBasicTimeStep())
+
+# 獲取籃球的物體
+ball = robot.getFromDef("BASKETBALL")
+ball_position = ball.getPosition()
+
+# 模擬循環
+while robot.step(timestep) != -1:
+    # 更新籃球的位置
+    ball_position = ball.getPosition()
+
+    # 如果籃球進入籃框範圍，則顯示得分訊息
+    if ball_position[0] &gt; 0.5 and ball_position[0] &lt; 1.5 and ball_position[1] &gt; 0.5:
+        print("得分！")</pre>
+</li>
+</ul>
+<p></p>
+</li>
+<li>
+<p><strong>連接控制器與世界</strong>：</p>
+<ul>
+<li>在 Webots 中，點選 <code inline="">WorldInfo</code> 節點，在屬性面板中找到 <code inline="">controller</code> 屬性，並將其設置為剛創建的控制器程式名稱 <code inline="">basketball_controller.py</code>。</li>
+</ul>
+</li>
+</ol>
+<h4><span style="background-color: #00ffff;">步驟 7：測試與調整</span></h4>
+<ol>
+<li>
+<p><strong>啟動模擬</strong>：</p>
+<ul>
+<li>點選 Webots 上方的 <code inline="">Play</code> 按鈕來啟動模擬。</li>
+<li>你應該可以看到籃球在桌子上彈跳，並且控制器會檢測籃球是否進入籃框並顯示得分。</li>
+</ul>
+</li>
+<li>
+<p><strong>調整參數</strong>：</p>
+<ul>
+<li>如果籃球的反彈效果或運動不符合預期，可以調整物理屬性（例如彈性、摩擦力、質量）來改善模擬效果。</li>
+</ul>
+</li>
+</ol>
+<h4><span style="background-color: #00ffff;">步驟 8：保存與分享</span></h4>
+<ol>
+<li>
+<p><strong>保存世界檔案</strong>：</p>
+<ul>
+<li>在 Webots 中，選擇 <code inline="">File</code> &gt; <code inline="">Save</code> 來保存你的 <code inline="">.wbt</code> 檔案。</li>
+</ul>
+</li>
+<li>
+<p><strong>分享模擬</strong>：</p>
+<ul>
+<li>你可以將 <code inline="">.wbt</code> 檔案和控制器程式（例如 <code inline="">basketball_controller.py</code>）一起分享，讓其他人可以使用這個模擬。</li>
+</ul>
+</li>
+</ol><br />w5 << <a href='w5.html'>Previous</a> <a href='Homework.html'>Next</a> >> Homework</div>
         
     <!-- footer -->
       <div class="container">
