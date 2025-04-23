@@ -1,461 +1,148 @@
-<h1>About</h1>
-<p>課程名稱: 協同產品設計實習 - Collaborative Product Design Practice</p>
-<p>學員作業網站:<a href="https://mdecd2025.github.io/hw-41223158">https://mdecd2025.github.io/hw-41223158</a></p>
-<p>學員作業倉儲: <a href="https://github.com/mdecd2025/hw-41223158">https://github.com/mdecd2025/hw-41223158</a></p>
-<hr/>
-<p>課程代號: cd2025</p>
-<p>Teams 線上教學:</p>
-<p style="padding-left: 30px;">以 "學號@nfu.edu.tw" 登入<span> </span><a href="https://login.microsoftonline.com/">https://login.microsoftonline.com/</a><span> </span>Office 365</p>
-<p style="padding-left: 30px;">Teams 團隊代碼: <span>p5z4eku</span></p>
-<hr/>
-<p>課程評分:</p>
-<p style="padding-left: 30px;">Homework (30%) - 每週至少提交兩次與課程進度有關的內容, 完成後填回自評表單</p>
-<p style="padding-left: 30px;">Exam (40%) - 建立包含操作流程影片、心得以及提供檔案下載的網頁後填回自評表單</p>
-<p style="padding-left: 30px;">Final Report (30%) - 利用網頁內容進行簡報並提交 pdf 格式書面報告, 完成後填回自評表單</p>
-<h2>w1</h2>
-<p><span>w1 任務</span>:</p>
-<p>分組團隊 (Teams) 建立後, 請參考<a href="https://mde.tw/cd2025/content/list.html">說明</a>後, 將各班各學員與各團隊的倉儲與網站連結, 分別放入標題為 list (使用第一階標題) 的網頁中</p>
-<p><span><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/OgzPvtWtm4I" width="560"></iframe></span></p>
-<p><span>列出組員的倉儲與網頁</span></p>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false"># 從  Brython 程式庫中的 browser 導入 html, 可用來輸出超文件內容
-# 而所導入的 document 可以指向網頁中的特定 id 內容
-from browser import html, document
-# 建立 url 變數與網站中 2a 學員的學號與帳號資料 URL 網誌字串對應
-url = "https://mde.tw/list/2a.txt"
-# 利用 open() 物件中的 readlines() 方法, 取出網站中的資料並逐行放入數列中, 因此 data 的資料型別為數列
-data = open(url).readlines()
-# 進行資料查驗時, 印出 data 數列內容
-#print(data)
-# 因為學員資料中的第一列為標題, 因此有效資料從索引值 1 開始
-all_stud = data[1:]
-# 利用 len() 函式查驗 all_stud 數列有幾筆資料, 因為要與前後的字串併接, 因此利用 str() 將整數轉為字串
-print("總共有 " + str(len(all_stud)) + "名學員")
-# 
-# 利用 document[] 取得 id 為 "brython_div1" 的位置, 然後與 brython_div1 變數對應
-brython_div1 = document["brython_div1"]
-# 利用 Brython 的 "&lt;=" 特殊符號, 將右值帶有字串與超文件內容物件插入 brython_div1 變數所指定的位置
-# 其中利用 html.A 建立 anchor 標註物件, 第一個變數為 anchor 字串, 第二個變數則為 hyper text reference
-brython_div1 &lt;= "1. " + html.A("2a-ag4", href="https://mdecd2025.github.io/2a-ag4/")+ html.A("(repo)", href="https://github.com/mdecd2025/2a-ag4")
-# 利用 html.BR() 插入 break 標註
-brython_div1 &lt;= html.BR()
-brython_div1 &lt;= "2. " + html.A("41223118", href="https://mdecd2025.github.io/hw-zhe41223118/")+ html.A("(repo)", href="https://github.com/mdecd2025/hw-zhe41223118")
-brython_div1 &lt;= html.BR()
-brython_div1 &lt;= "3. " + html.A("41223122", href="https://mdecd2025.github.io/hw-41223122/")+ html.A("(repo)", href="https://github.com/mdecd2025/hw-41223122")
-brython_div1 &lt;= html.BR()
-brython_div1 &lt;= "4. " + html.A("41223131", href="https://mdecd2025.github.io/hw-41223131/")+ html.A("(repo)", href="https://github.com/mdecd2025/hw-41223131")
-brython_div1 &lt;= html.BR()
-brython_div1 &lt;= "5. " + html.A("41223134", href="https://mdecd2025.github.io/hw-41223134/")+ html.A("(repo)", href="https://github.com/mdecd2025/hw-41223134")
-brython_div1 &lt;= html.BR()
-brython_div1 &lt;= "6. " + html.A("41223136", href="https://mdecd2025.github.io/hw-41223136/")+ html.A("(repo)", href="https://github.com/mdecd2025/hw-41223136")
-brython_div1 &lt;= html.BR()
-brython_div1 &lt;= "7. " + html.A("41223158", href="https://mdecd2025.github.io/hw-41223158/")+ html.A("(repo)", href="https://github.com/mdecd2025/hw-41223158")
-</pre>
-<p><span>1. </span><a href="https://mdecd2025.github.io/2a-ag4/">2a-ag4</a><a href="https://github.com/mdecd2025/2a-ag4">(repo)</a><br/><span>2. </span><a href="https://mdecd2025.github.io/hw-zhe41223118/">41223118</a><a href="https://github.com/mdecd2025/hw-zhe41223118">(repo)</a><br/><span>3. </span><a href="https://mdecd2025.github.io/hw-41223122/">41223122</a><a href="https://github.com/mdecd2025/hw-41223122">(repo)</a><br/><span>4. </span><a href="https://mdecd2025.github.io/hw-41223131/">41223131</a><a href="https://github.com/mdecd2025/hw-41223131">(repo)</a><br/><span>5. </span><a href="https://mdecd2025.github.io/hw-41223134/">41223134</a><a href="https://github.com/mdecd2025/hw-41223134">(repo)</a><br/><span>6. </span><a href="https://mdecd2025.github.io/hw-41223136/">41223136</a><a href="https://github.com/mdecd2025/hw-41223136">(repo)</a><br/><span>7. </span><a href="https://mdecd2025.github.io/hw-41223158/">41223158</a><a href="https://github.com/mdecd2025/hw-41223158">(repo)</a></p>
-<p><br/><br/><br/></p><h2>w3</h2>
-<h4>用程式計算出班上與別班未分組名單，已本班甲班2a為主。</h4>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">import os
-from github import Github
-
-# 設定 GitHub Token 與組織名稱
-GITHUB_TOKEN = 'your_token'  # 🚨 請換成你的 GitHub Token
-ORG_NAME = 'mdecd2025'
-PROXY = 'http://p4.cycu.org:3128'
-
-# 班上所有學號
-all_students = {
-    "40932134", "41023105", "41023109", "41023111", "41023128", "41023137", "41023150", "41023220", "41023222",
-    "41223101", "41223102", "41223103", "41223104", "41223105", "41223106", "41223107", "41223110", "41223111",
-    "41223112", "41223113", "41223114", "41223116", "41223117", "41223118", "41223119", "41223120", "41223121",
-    "41223122", "41223123", "41223124", "41223125", "41223126", "41223129", "41223130", "41223131", "41223132",
-    "41223133", "41223134", "41223136", "41223137", "41223138", "41223140", "41223141", "41223143", "41223144",
-    "41223146", "41223147", "41223148", "41223149", "41223150", "41223152", "41223153", "41223154", "41223156",
-    "41223157", "41223158", "41271125", "41271131", "41271146", "41271158"
+<!DOCTYPE html><html>
+        <head>
+        <title>cd_hw</title>
+        <meta charset="utf-8">
+<meta property="head" content="H2">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/magnific-popup.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/jquery-ui.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/flaticon/font/flaticon.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/aos.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/style.css">
+        <link rel="shortcut icon" href="./../cmsimde/static/favicons.png">
+        
+        <style type='text/css'>
+            .site-section {
+            background-color: #FFFF;
+            padding: 40px 40px;
+            }
+            body > div > div.dropdown.open {
+                display: block;
+            }
+        </style>
+    
+        <!-- <script src="./../cmsimde/static/jquery.js"></script> -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+        <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="./../cmsimde/static/tipuesearch/css/normalize.min.css">
+        <script src="./../cmsimde/static/tipuesearch/tipuesearch_set.js"></script>
+        <script src="tipuesearch_content.js"></script>
+        <link rel="stylesheet" href="./../cmsimde/static/tipuesearch/css/tipuesearch.css">
+        <script src="./../cmsimde/static/tipuesearch/tipuesearch.js"></script>
+        <!-- for Wink3 客製化關閉 -->
+        <!--
+        <link rel="stylesheet" type="text/css" href="./../cmsimde/static/winkPlayer.css" />
+        <script type="text/javascript" src="./../cmsimde/static/winkPlayer.js"></script>
+        -->
+        <script>
+            /* original tipuesearch
+            $(document).ready(function() {
+                 $('#tipue_search_input').tipuesearch();
+            });
+            */
+            // customed doSearch
+            function doSearch() {
+                $('#tipue_search_input').tipuesearch({
+                    newWindow: true, 
+                    minimumLength: 2,
+                    wholeWords: false, // for search 中文
+                });
+            }
+            $(document).ready(doSearch);
+        </script>
+        
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shCore.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushBash.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushDiff.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushJScript.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushJava.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPython.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushSql.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushHaxe.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushXml.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPhp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPowerShell.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushLua.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushMojo.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushWbt.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCpp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCss.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCSharp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushDart.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushRust.js"></script>
+<link type="text/css" rel="stylesheet" href="./../cmsimde/static/syntaxhighlighter/css/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+<!-- 暫時不用
+<script src="./../cmsimde/static/fengari-web.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/Cango-13v08-min.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/CangoAxes-4v01-min.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/gearUtils-05.js"></script>
+-->
+<!-- for Brython 暫時不用
+<script src="https://scrum-3.github.io/web/brython/brython.js"></script>
+<script src="https://scrum-3.github.io/web/brython/brython_stdlib.js"></script>
+-->
+<style>
+img.add_border {
+    border: 3px solid blue;
 }
-a_all_members = ['41223154', '41271125', '41271158', '41271146', '41271131', 'CYG41223103', '41223102', '41023128', '41023137', '41223137', '41223157', '41223156', 'otakuyoyo', '41223141', '41223113', 'kim41223114', 'joeisme1208', '41223116', '41223144', '41223140', '41223143', '41223138', '41223134', '41223136', 'zhe41223118', 'Spirit0224', 'yuhao-08', '41223158', 'Ren911308', '41223150', 'Manto8', 'CYA41223106', 'yan21ed', 'Lin41223107', '41223133', 'hong41223129', '41223110', '41223147', 'Linjiahong41223125', 'CHN41223132', 'Yu-Fang-Hong', '41023111', 'yckaooooo', 'kolas911205', '41023105', '40932134', '41223104', 'yan41223101', '41223105', '41223153', '41223120', '41223152', 'G8People', 'WSE41223112', '41223146', '41223119']
-def get_grouped_members(org_name, token, proxy):
-    """從 GitHub 獲取已分組的成員"""
-    os.environ['http_proxy'] = proxy
-    os.environ['https_proxy'] = proxy
+</style>
 
-    g = Github(token)
-    grouped_members = set()
+</head>
+<body>
+<div class='container'><nav>
+        
+    <div class="site-wrap">
 
-    try:
-        org = g.get_organization(org_name)
-        teams = org.get_teams()
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    
+            <header class="site-navbar py-4 bg-white" role="banner">
+              <div class="container">
+                <div class="row align-items-center">
+                <h1>cd2025 協同產品設計實習學員網站 41223158</h1>
+                <div class="pl-4">
+                    <form>
+                    <input type="text" placeholder="Search" name="q" id="tipue_search_input" pattern=".{2,}" title="At least 2 characters" required>
+                    </form>
+                </div>
+                  <!-- <div class="col-11 col-xl-2">
+                    <h1 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">cd2025 協同產品設計實習學員網站 41223158</a></h1> 
+                  </div>
+                  -->
+                  <div class="col-12 col-md-10 d-none d-xl-block">
+                    <nav class="site-navigation position-relative text-right" role="navigation">
+    <ul class='site-menu js-clone-nav mr-auto d-none d-lg-block'>
+                        <li class="active has-children"><a href="index.html">Home</a>
+                        <ul class="dropdown">
+                            <li><a href="sitemap.html">SMap</a></li>
+                            <li><a href="./../reveal/index.html">reveal</a></li>
+                            <li><a href="./../blog/index.html">blog</a></li>
+                        </ul>
+                      </li>
+                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='w1.html'>w1</a><li><a href='w3.html'>w3</a><li><a href='w4.html'>w4</a><li class='has-children'><a href='w5.html'>w5</a><ul class='dropdown'><li><a href='組員作業.html'>組員作業</a></li></ul><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w8.html'>w8</a><li><a href='w9.html'>w9</a></li></ul><li class='has-children'><a href='task.html'>task</a><ul class='dropdown'><li><a href='task1 (自行製作可攜程式系統).html'>task1 (自行製作可攜程式系統)</a><li><a href='task2(使用 SSH 協定執行作業倉儲的推送).html'>task2(使用 SSH 協定執行作業倉儲的推送)</a><li><a href='task3 使用 Solvespace 建立平面四連桿系統零組件.html'>task3 使用 Solvespace 建立平面四連桿系統零組件</a><li><a href='task4 查驗是否有學員加入錯誤的班級組別.html'>task4 查驗是否有學員加入錯誤的班級組別</a><li><a href='task5 Webots Tutorial.html'>task5 Webots Tutorial</a></li></ul><li class='has-children'><a href='Homework.html'>Homework</a><ul class='dropdown'><li><a href='HW1.html'>HW1</a><li><a href='HW2.html'>HW2</a><li><a href='HW3.html'>HW3</a></li></ul><li><a href='Midterm.html'>Midterm</a><li class='has-children'><a href='Exam.html'>Exam</a><ul class='dropdown'><li><a href='Exam1.html'>Exam1</a><li><a href='Exam2.html'>Exam2</a><li><a href='Exam3.html'>Exam3</a></li></ul><li><a href='Final.html'>Final</a><li><a href='Brython.html'>Brython</a></li>
+                      </ul>
+                </nav>
+              </div>
+              <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+              </div>
 
-        for team in teams:
-            if team.name.lower().startswith('g'):
-                members = team.get_members()
-                for member in members:
-                    grouped_members.add(member.login)
-
-    except Exception as e:
-        print(f"An error occurred: {e}")
-
-    return grouped_members
-
-if __name__ == "__main__":
-    # 取得 GitHub 上的已分組成員
-    grouped_students = get_grouped_members(ORG_NAME, GITHUB_TOKEN, PROXY)
-
-    # 計算未分組的學號
-    ungrouped_students = sorted(all_students - grouped_students)
-
-    # 📌 只輸出未分組學號
-    for student in ungrouped_students:
-        print(student)
-</pre>
-<div class="line number1 index0 alt2">
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">未分組學號：
-41023220 | 未分組
-41223111 | 未分組
-41223119 | 未分組
-41223124 | 未分組
-41223148 | 未分組
-</pre>
-<code class="html plain"></code></div>
-<div class="line number1 index0 alt2"><code class="html plain"></code></div>
-<h2>w4</h2>
-<h4><span>建立IPv6 位址設定正確運作-1</span></h4>
-<p><span>在太乙網路打上自己的ip跟打上老師給的連接。</span></p>
-<p><span style="background-color: #ffcc99;">IPv6 設定:</span></p>
-<p>2a 各學員固定 IPv6 分配: 2001:288:6004:17:fff1:cd25:0000:a001<br/><span></span></p>
-<p>從這個連結找到自己的號碼 : </p>
-<p><a href="https://mde.tw/cd2025/downloads/w4_2a_index.txt">https://mde.tw/cd2025/downloads/w4_2a_index.txt</a></p>
-<p><span style="background-color: #ffcc99;">老師給的連接:</span><br/>gateway: 2001:288:6004:17::254<br/>dns server:<br/>2001:288:6004:17::3<br/>2001:b000:168::1</p>
-<p><span style="background-color: #ffcc99;">請按造如圖下:</span></p>
-<p><span style="background-color: #ffcc99;"></span></p>
-<p><span><img alt="" height="309" src="/images/螢幕擷取畫面 2025-04-11 154101.png" width="485"/></span></p>
-<p></p>
-<p><span style="background-color: #ffcc99;">接著從自己的作業網站中找到自己的金輪鑰齒建立ppk檔，僅接步驟如圖下。</span></p>
-<p><span style="background-color: #ffcc99;"><img alt="" height="238" src="/images/螢幕擷取畫面 2025-04-11 161044.png" width="532"/></span></p>
-<p><img caption="false" height="438" src="/images/螢幕擷取畫面 2025-04-11 154244.png" width="445"/></p>
-<p><img alt="" height="440" src="/images/螢幕擷取畫面 2025-04-11 154310.png" width="443"/></p>
-<p><img alt="" height="434" src="/images/螢幕擷取畫面 2025-04-11 154258.png" width="449"/></p>
-<p><img alt="" height="288" src="/images/螢幕擷取畫面 2025-04-11 154323.png" width="450"/></p>
-<p></p><h2>w5</h2>
-<h4><span>建立IPv6 位址設定正確運作-2</span></h4>
-<p><span style="background-color: #ffcc99;">我用學校電腦做的，並非用自己的電腦完成。</span></p>
-<p><span style="background-color: #ffcc99;">必須要跟此程式一樣，找到自己的檔案更改自己的名稱，還有學號。</span></p>
-<p><span style="background-color: #ffcc99;">步驟如圖下完成:</span></p>
-<p><span style="background-color: #ffcc99;"><span>程式樣本:</span></span></p>
-<p><span><img alt="" height="454" src="/images/螢幕擷取畫面 2025-04-11 153948.png" width="354"/></span></p>
-<p><span style="background-color: #ffcc99;">程式指令:</span></p>
-<p><span><img alt="" height="416" src="/images/螢幕擷取畫面 2025-04-11 153928.png" width="800"/></span></p>
-<p><span style="background-color: #ffcc99;">步驟影片如下 : </span></p>
-<p><span style="background-color: #ffcc99;"><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/dXoinxrQxjc" width="560"></iframe></span></p>
-<p><br/><span style="background-color: #ffcc99;"></span></p><h3>組員作業</h3>
-<h4><br/>請詳細說明如何採手動方式在 Webots 建立<span>桌上籃球遊戲機模擬系統的敘述。</span></h4>
-<h4><span style="background-color: #00ffff;">步驟 1：創建新世界</span></h4>
-<ol>
-<li>
-<p><strong>啟動 Webots</strong>：</p>
-<ul>
-<li>打開 Webots 軟體，並進入主介面。</li>
-</ul>
-</li>
-<li>
-<p><strong>創建新世界</strong>：</p>
-<ul>
-<li>在 Webots 的主畫面中，選擇 <code inline="">File</code> &gt; <code inline="">New World</code>，這會創建一個名為 <code inline="">untitled.wbt</code> 的新世界。</li>
-<li>新創建的世界會有一個預設的地面，並且已經設定了一些基本參數。</li>
-</ul>
-</li>
-</ol>
-<h4><span style="background-color: #00ffff;">步驟 2：設置桌面結構</span></h4>
-<ol>
-<li>
-<p><strong>新增桌子（Solid）</strong>：</p>
-<ul>
-<li>在 <code inline="">Scene Tree</code> 中，右鍵點選 <code inline="">WorldInfo</code> 節點，選擇 <code inline="">Add</code> &gt; <code inline="">Solid</code>，會在場景中新增一個 <code inline="">Solid</code> 節點。這個 <code inline="">Solid</code> 節點將代表你的桌子。</li>
-</ul>
-</li>
-<li>
-<p><strong>新增桌面的形狀（Shape）</strong>：</p>
-<ul>
-<li>在 <code inline="">Solid</code> 節點下，右鍵點選 <code inline="">Solid</code> 節點，選擇 <code inline="">Add</code> &gt; <code inline="">Shape</code> &gt; <code inline="">Box</code>。這將創建一個長方體來代表桌面。</li>
-</ul>
-</li>
-<li>
-<p><strong>設定桌子尺寸</strong>：</p>
-<ul>
-<li>點選 <code inline="">Box</code> 節點，然後在右側的屬性面板中設定 <code inline="">size</code> 參數來調整桌子的大小。假設我們的桌子尺寸是 2 米長，1 米寬，0.1 米高，設定如下：</li>
-</ul>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">size 2 0.1 1</pre>
-</li>
-<li>
-<p><strong>設置桌子的顏色</strong>：</p>
-<ul>
-<li>點選 <code inline="">Solid</code> 節點，右鍵選擇 <code inline="">Appearance</code>，然後設定材質的顏色。你可以選擇木色或其他顏色來模擬桌子表面。</li>
-</ul>
-</li>
-</ol>
-<h4><span style="background-color: #00ffff;">步驟 3：創建籃球框</span></h4>
-<ol>
-<li>
-<p><strong>新增籃框（Solid）</strong>：</p>
-<ul>
-<li>在 <code inline="">Scene Tree</code> 中，右鍵點選 <code inline="">WorldInfo</code> 節點，選擇 <code inline="">Add</code> &gt; <code inline="">Solid</code>，再右鍵選擇新創建的 <code inline="">Solid</code> 節點，選擇 <code inline="">Add</code> &gt; <code inline="">Shape</code> &gt; <code inline="">Cylinder</code>。這將創建一個圓柱形的籃框。</li>
-</ul>
-</li>
-<li>
-<p><strong>設置籃框的大小與位置</strong>：</p>
-<ul>
-<li>點選 <code inline="">Cylinder</code> 節點，並在右側屬性面板中設定 <code inline="">radius</code> 和 <code inline="">height</code>。例如：</li>
-</ul>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">radius 0.2
-height 0.05</pre>
-<ul>
-<li>設定 <code inline="">translation</code> 來調整籃框的位置。假設我們要把籃框放置在桌面上方，並放置在桌子的遠端。設定如下：</li>
-</ul>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">translation 0 0.6 -0.5</pre>
-<p>這樣，籃框就會位於桌子的上方，距離桌面的高度為 0.6 米。</p>
-</li>
-</ol>
-<h4><span style="background-color: #00ffff;">步驟 4：創建籃球</span></h4>
-<ol>
-<li>
-<p><strong>新增籃球（Solid）</strong>：</p>
-<ul>
-<li>在 <code inline="">Scene Tree</code> 中，右鍵點選 <code inline="">WorldInfo</code> 節點，選擇 <code inline="">Add</code> &gt; <code inline="">Solid</code>，然後右鍵選擇新創建的 <code inline="">Solid</code> 節點，選擇 <code inline="">Add</code> &gt; <code inline="">Shape</code> &gt; <code inline="">Sphere</code>。這將創建一個球形的籃球。</li>
-</ul>
-</li>
-<li>
-<p><strong>設定籃球大小與顏色</strong>：</p>
-<ul>
-<li>點選 <code inline="">Sphere</code> 節點，在右側屬性面板中設定 <code inline="">radius</code>，例如將 <code inline="">radius</code> 設定為 0.1 米，代表籃球的直徑為 20 公分。</li>
-</ul>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">radius 0.1</pre>
-<ul>
-<li>設定顏色，為了讓籃球看起來像真實的籃球，可以選擇橙色。這樣籃球就會顯示為橙色。</li>
-</ul>
-</li>
-<li>
-<p><strong>設定籃球的位置</strong>：</p>
-<ul>
-<li>設定 <code inline="">translation</code>，將籃球放置於桌面上方，距離桌面大約 0.2 米。</li>
-</ul>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">translation 0 0.2 -0.5</pre>
-</li>
-</ol>
-<h4><span style="background-color: #00ffff;">步驟 5：設置物理屬性</span></h4>
-<ol>
-<li>
-<h4><strong>設定桌子與籃框的物理屬性</strong>：</h4>
-<ul>
-<li>
-<h4>桌子和籃框不需要太多的彈性，但需要摩擦力，這樣物體才能有真實的接觸效果。</h4>
-</li>
-</ul>
-<h4>在 <code inline="">Solid</code> 節點中添加物理屬性設定：</h4>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">Physics { 
-        density 1.0 
-        friction 0.9 
-        bounce 0.0 # 桌子和籃框不會反彈 
-}</pre>
-<h4><br/><br/></h4>
-</li>
-<li>
-<p><strong>設定籃球的物理屬性</strong>：</p>
-<ul>
-<li>籃球需要較高的彈性，以便它能夠反彈。可以設置以下屬性：</li>
-</ul>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">Physics {
-    density 0.5
-    friction 0.3
-    bounce 0.7  # 籃球有較高的反彈
-}</pre>
-</li>
-</ol>
-<h4><span style="background-color: #00ffff;">步驟 6：創建控制器</span></h4>
-<ol>
-<li>
-<h4><strong>創建 Python 控制器程式</strong>：</h4>
-<ul>
-<li>
-<h4>在 Webots 中，你需要使用控制器來控制物體的行為，例如投籃等。創建一個新的 Python 控制器，並將其命名為 <code inline="">basketball_controller.py</code>。</h4>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>編寫控制器邏輯</strong>：</p>
-<ul>
-<li>控制器的主要目的是監控籃球的運動，並在籃球進入籃框時進行計分。下面是一個簡單的範例程式，會檢查籃球是否進入籃框範圍。</li>
-<li>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">範例程式碼：
-
-from controller import Robot
-
-# 創建 robot 物件來控制 Webots 模擬
-robot = Robot()
-timestep = int(robot.getBasicTimeStep())
-
-# 獲取籃球的物體
-ball = robot.getFromDef("BASKETBALL")
-ball_position = ball.getPosition()
-
-# 模擬循環
-while robot.step(timestep) != -1:
-    # 更新籃球的位置
-    ball_position = ball.getPosition()
-
-    # 如果籃球進入籃框範圍，則顯示得分訊息
-    if ball_position[0] &gt; 0.5 and ball_position[0] &lt; 1.5 and ball_position[1] &gt; 0.5:
-        print("得分！")</pre>
-</li>
-</ul>
-<p></p>
-</li>
-<li>
-<p><strong>連接控制器與世界</strong>：</p>
-<ul>
-<li>在 Webots 中，點選 <code inline="">WorldInfo</code> 節點，在屬性面板中找到 <code inline="">controller</code> 屬性，並將其設置為剛創建的控制器程式名稱 <code inline="">basketball_controller.py</code>。</li>
-</ul>
-</li>
-</ol>
-<h4><span style="background-color: #00ffff;">步驟 7：測試與調整</span></h4>
-<ol>
-<li>
-<p><strong>啟動模擬</strong>：</p>
-<ul>
-<li>點選 Webots 上方的 <code inline="">Play</code> 按鈕來啟動模擬。</li>
-<li>你應該可以看到籃球在桌子上彈跳，並且控制器會檢測籃球是否進入籃框並顯示得分。</li>
-</ul>
-</li>
-<li>
-<p><strong>調整參數</strong>：</p>
-<ul>
-<li>如果籃球的反彈效果或運動不符合預期，可以調整物理屬性（例如彈性、摩擦力、質量）來改善模擬效果。</li>
-</ul>
-</li>
-</ol>
-<h4><span style="background-color: #00ffff;">步驟 8：保存與分享</span></h4>
-<ol>
-<li>
-<p><strong>保存世界檔案</strong>：</p>
-<ul>
-<li>在 Webots 中，選擇 <code inline="">File</code> &gt; <code inline="">Save</code> 來保存你的 <code inline="">.wbt</code> 檔案。</li>
-</ul>
-</li>
-<li>
-<p><strong>分享模擬</strong>：</p>
-<ul>
-<li>你可以將 <code inline="">.wbt</code> 檔案和控制器程式（例如 <code inline="">basketball_controller.py</code>）一起分享，讓其他人可以使用這個模擬。</li>
-</ul>
-</li>
-</ol>
-<h2>w6</h2>
-<p><span>請注意, <span style="background-color: #ff9900;">所有 world 的存檔必須要將模擬時間轉為 0</span></span>, 否則所存的變數狀態將為該時間的模擬結果.</p>
-<p><a href="https://cyberbotics.com/doc/guide/tutorial-1-your-first-simulation-in-webots?tab-language=python">Tutorial 1</a><span> </span>重點摘要:</p>
-<p>將 <a href="http://229.cycu.org/Webots_2025a_web.7z">Webots_2025a_web.7z</a> 解開壓縮後放入可攜套件 (<a href="http://229.cycu.org/portable_wcm2025.7z">portable_wcm2025.7z</a>) 的 data 目錄中.</p>
-<p>因為 start.bat 中已經宣告 Python 所在位置, 並將執行 webotsw.exe 所在的目錄放入 Windows 的命令搜尋路徑變數中 (path).</p>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">REM for Webots
-set PYTHON_PATH=%Disk%:\Python313
- 
-REM for webots
-set  path_webots=%Disk%:\Webots_2025a\msys64\mingw64\bin;%Disk%:\Webots_2025a\msys64\usr\bin</pre>
-<p><span>當起始一個 Webots project, 需要至少建立 worlds、controllers、protos 等三個目錄, 而且 Robot 的</span><span>控制器程式必須放入 controllers 目錄, 且控制程式檔名必須與子目錄相同</span><span>.</span></p>
-<h2>w7</h2>
-<ol>
-<li>各 Solid - Shape - geometry 在建立 open chain 機構時, 可以在尚未設定 physics 之前單軸運轉, 但 Webots 牽涉需要模擬 closed chain 機構時, 各 Solid - Shape -geometry 則必須設定 boundingObject 與 physics 才能透過 solidReference 進行 dynamics 聯立運算. 亦即 Webots 在模擬封閉機構時, 只能處理 Dynamics 模擬, 原因是其模擬運算是從<span> </span><a href="https://www.ode.org/">ODE</a><span> </span>動力程式庫修改而來, 並沒有附加 closed chain 的 kinematics 運算.</li>
-<li>當個別 link 採 box 建立時, 為了要符合其 kinematics 運動約束條件, 各桿件的起始條件必須滿足 fourbar linkage 的約束條件, 因此只有 link1 旋轉 90 度, 可以在 x 與 y 軸同動的情況下無需透 pose 進行局部座標轉換, 但 link2 與 link3 在納入 Shape 之前必須立 pose 節點置入額外的座標轉換.</li>
-<li>各 link 的 boundingObject 欄位, 可以透過其 link Shape 採 USE 的方式重用.</li>
-<li>最後 joint4 的旋轉中心則透過 solidReference 與 link3 的端點座標重合, 才能完成 closed chain 的動力約束條件模擬</li>
-</ol>
-<p>     <span style="color: #000000; background-color: #ff9900;">下載檔案 : <span style="background-color: #ffffff;"><a href="/downloads/41223158 fourbar_shooter_w7.7z" style="background-color: #ffffff;">/downloads/41223158 fourbar_shooter_w7.7z</a></span></span></p>
-<p><span style="color: #000000; background-color: #ff9900;"><span style="background-color: #ffffff;"><img alt="" height="290" src="/images/螢幕擷取畫面 2025-04-24 044532.png" width="465"/></span></span></p>
-<p> <span style="background-color: #ff9900;">投球機零件影片 : </span></p>
-<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/4wOPzQfoPic" width="560"></iframe></p>
-<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/J3EfwDlwDJw" width="560"></iframe></p>
-<p><span style="background-color: #ff9900;">投球機組合件 : <span style="background-color: #ffffff;"></span></span></p>
-<p><span style="background-color: #ff9900;"><span style="background-color: #ffffff;"><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/xo4yxNbMaAk" width="560"></iframe></span></span></p>
-<h2>w8</h2>
-<p class="" data-end="107" data-start="49"><span> 複習 </span><a href="https://cyberbotics.com/doc/reference/solidreference">SolidReference</a><span> </span> 是一種引用類型，用於 <code data-end="84" data-start="77">Joint</code> 節點的 <code data-end="99" data-start="89">endPoint</code> 欄位，可指向：</p>
-<ol data-end="208" data-start="109">
-<li class="" data-end="163" data-start="109">
-<p class="" data-end="163" data-start="112"><span style="background-color: #ff9900;"><strong data-end="124" data-start="112">現有 Solid</strong></span>：例如機械零件，但必須與該 Joint 同屬某個共同上層 Solid 的後代。</p>
-</li>
-<li class="" data-end="208" data-start="164">
-<p class="" data-end="208" data-start="167"><strong data-end="198" data-start="167">靜態環境 <code data-end="196" data-start="174">&lt;static environment&gt;</code></strong>：如地面或固定基座。</p>
-</li>
-</ol>
-<p class="" data-end="219" data-start="210"><strong data-end="219" data-start="210"><span style="background-color: #ff9900;">應用說明</span>：</strong></p>
-<ul data-end="433" data-start="221">
-<li class="" data-end="334" data-start="221">
-<p class="" data-end="334" data-start="223">若在 <span style="background-color: #ff9900;"><strong data-end="245" data-start="226">fourbar linkage</strong></span> 中，將 <code data-end="258" data-start="250">joint4</code> 設於 base 的最右端，並將其 <code data-end="286" data-start="276">endPoint</code> 指向 <code data-end="297" data-start="290">link3</code>，則符合「joint 與 solid 為共同上層 base 的後代」條件。</p>
-</li>
-<li class="" data-end="433" data-start="335">
-<p class="" data-end="433" data-start="337">或者，將 <code data-end="350" data-start="342">joint4</code> 設於 <code data-end="361" data-start="354">link3</code> 末端，並讓其 <code data-end="379" data-start="369">endPoint</code> 指向 <code data-end="405" data-start="383">&lt;static environment&gt;</code>，則可將 <code data-end="417" data-start="410">link3</code> 固定於地面，達成相同閉合效果。</p>
-</li>
-</ul>
-<h2>w9</h2>
-<p><span>本週統整先前所完成的進度內容，並拍成自己的yt影片，自評期望成績並填寫表單。</span></p><h1>task</h1>
-<p>目錄:</p>
-<p>     <b><i>1. </i></b><span>task1 (自行製作可攜程式系統)</span></p>
-<p>    <em> 2. </em>task2 使用 SSH 協定執行作業倉儲的推送</p>
-<p>     3. task3 使用 Solvespace 建立平面四連桿系統零組件</p>
-<p>     4.task4 查驗是否有學員加入錯誤的班級組別</p><h3>task1 (自行製作可攜程式系統)</h3>
-<p><span>此作業的目的在展示如何利用既有的 Python 可攜系統建立各版本的 Python 可攜環境.影片如下 :</span></p>
-<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/qdga364f-9k" width="560"></iframe></p>
-<p></p><h2>task2(使用 SSH 協定執行作業倉儲的推送)</h2>
-<p><a href="https://zh.wikipedia.org/zh-tw/Secure_Shell">SSH</a><span> </span>是一種加密的網路傳輸協定, PuTTY 則是可用於 Windows 環境的 SSH 協定工具, 其中支援遠端登入 (putty.exe) 與檔案傳輸工具 (psftp.exe).</p>
-<p>使用 PuTTY 所建立的公私鑰進行 Github push 認證的影片步驟如下:</p>
-<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/dXoinxrQxjc" width="560"></iframe></p>
-<p></p>
-<p>要注意的是<span>公私鑰要放在相對應的檔案，否則會打不開(如圖下)，其他步驟在w4。</span></p>
-<p><span><img alt="" height="399" src="/images/螢幕擷取畫面 2025-04-11 154323.png" width="623"/></span></p>
-<h2>task3 使用 Solvespace 建立平面四連桿系統零組件</h2>
-<p>下載檔案 : <a href="/downloads/fourbar41223158_slvs.zip">/downloads/fourbar41223158_slvs.zip</a></p>
-<p><img alt="" height="294" src="/images/螢幕擷取畫面 2025-04-24 044614.png" width="471"/></p>
-<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/fnbHD_yTbd8" width="560"></iframe></p>
-<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/oz9I75hMxlI" width="560"></iframe></p>
-<p></p>
-<h2>task4 查驗是否有學員加入錯誤的班級組別</h2>
-<p>因為上列程式已經給出兩班當時已經參與分組的學員 Github 帳號, 因此只需要從<span> </span><a href="https://mde.tw/list/2b.txt">https://mde.tw/list/2b.txt</a> 讀取學員的學號與 Github 帳號, 並且在 for 迴圈中, 逐一用學員的 Github 帳號相對於各班已經參與分組的學員 Github 帳號, 並且列出特定學員的 Github 帳號不在前述已經參與分組的學員帳號數列中, 即可列出截至當時尚未那組的學員學號.</p>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">import requests
-
-# Step 1: 下載甲班學員資料
-url = "https://mde.tw/list/2a.txt"
-response = requests.get(url)
-data = response.text.splitlines()
-
-# Step 2: 去除標題列
-all_stud = data[1:]
-
-# Step 3: 甲班已知 GitHub 名單
-a_all_members = [
-    '41223154', '41271125', '41271158', '41271146', '41271131', 'CYG41223103',
-    '41223102', '41023128', '41023137', '41223137', '41223157', '41223156',
-    'otakuyoyo', '41223141', '41223113', 'kim41223114', 'joeisme1208', '41223116',
-    '41223144', '41223140', '41223143', '41223138', '41223134', '41223136',
-    'zhe41223118', 'Spirit0224', 'yuhao-08', '41223158', 'Ren911308', '41223150',
-    'Manto8', 'CYA41223106', 'yan21ed', 'Lin41223107', '41223133', 'hong41223129',
-    '41223110', '41223147', 'Linjiahong41223125', 'CHN41223132', 'Yu-Fang-Hong',
-    '41023111', 'yckaooooo', 'kolas911205', '41023105', '40932134', '41223104',
-    'yan41223101', '41223105', '41223153', '41223120', '41223152', 'G8People',
-    'WSE41223112', '41223146', '41223119'
-]
-
-# Step 4: 篩選缺少 GitHub 的學號
-missing = []
-
-print("甲班：")
-for i in all_stud:
-    stud = i.strip().split("\t")
-    stud_num = stud[0]
-    stud_github = stud[1]
-    if stud_github not in a_all_members:
-        print(stud_num)
-        missing.append(stud_num)
-
-# Step 5: 儲存結果到檔案
-with open("missing_github_2a.txt", "w", encoding="utf-8") as f:
-    f.write("以下同學的 GitHub 未在名單中：\n")
-    for stud_num in missing:
-        f.write(f"{stud_num}\n")
-</pre>
-<h2>task5 Webots Tutorial</h2>
+            </div>
+          </div>
+          
+        </header>
+    <div id="tipue_search_content">task4 查驗是否有學員加入錯誤的班級組別 << <a href='task4 查驗是否有學員加入錯誤的班級組別.html'>Previous</a> <a href='Homework.html'>Next</a> >> Homework<br /><h1>task5 Webots Tutorial</h1>
 <p><span style="background-color: #ff99cc;">1.請用繁體中文詳細說明下列資料: <a href="https://cyberbotics.com/doc/guide/introduction-to-webots" style="background-color: #ff99cc;">https://cyberbotics.com/doc/guide/introduction-to-webots </a></span></p>
 <p>Q1：什麼是Webots?</p>
 <p>Webots是一款專業的移動機器人模擬軟件，提供了3D虛擬環境，支持物理屬性設計，並且可創建不同類型的機器人(輪式、腿式、飛行)，並添加傳感器和執行器。支持單獨編程機器人以實現特定行為，提供大量模型和示例。模擬成功後，可以將程序轉移至真實的機器人，支持擴展新接口。</p>
@@ -1082,330 +769,54 @@ while robot.step(timestep) != -1:
 </div>
 </div>
 </div>
-</div><h1>Homework</h1>
-<p></p>
-<p>作業 (30%)</p>
-<p>HW1 (5%): <span style="background-color: #ffff00;">建立由 Box 組成的平面四連桿機構 Webots 模擬場景</span></p>
-<p style="padding-left: 30px;">part1:</p>
-<p style="padding-left: 60px;">請各學員在 USB 隨身碟或個人電腦上完成 cd2025 課程所需的可攜系統配置:</p>
-<p style="padding-left: 90px;">下載 <a href="http://229.cycu.org/portable_wcm2025.7z">portable_wcm2025.7z</a> (330MB, 解開壓縮後 1.4GB)</p>
-<p style="padding-left: 90px;"><a href="http://229.cycu.org/Webots_2025a.7z">Webots_2025a.7z</a> (1.5 GB, 解開後約為 2.9GB, 可單獨運作)</p>
-<p style="padding-left: 90px;"><a href="http://229.cycu.org/Webots_2025a_web.7z">Webots_2025a_web.7z</a> (171 MB, 解開壓縮後約為 1GB, 必須連網運作)</p>
-<p style="padding-left: 90px;"><a href="http://229.cycu.org/Blender4.2.7z">Blender4.2.7z</a></p>
-<p style="padding-left: 30px;">part2:</p>
-<p style="padding-left: 60px;">請各學員完成可攜程式系統配置後, 利用 Webots R2025a 中寬度與高度都為 0.1m 的 box 物件建立一個簡單的平面四連桿機構模擬場景.</p>
-<p style="padding-left: 60px;">base (基座) 長度 1m, link1 長度 0.4m, link2 長度 0.6m, link3 長度 0.9m, 各轉軸均為 HingeJoint, joint1 旋轉速度設定為 1radian/sec.</p>
-<p style="padding-left: 30px;">part3:</p>
-<p style="padding-left: 60px;">模擬場景啟動後, 按下 s 鍵機構開始作動, 按下 p 鍵後機構暫停.</p>
-<p style="padding-left: 30px;">參考資料:</p>
-<p style="padding-left: 60px;"><a href="/downloads/cd2025_hw1_demo.7z">cd2025_hw1_demo.7z</a></p>
-<p>HW2 (5%): <span style="background-color: #ffff00;">建立由 CAD 繪製零件組成的平面四連桿機構 Webots 模擬場景</span></p>
-<p style="padding-left: 30px;">各學員請利用 CAD 系統依據 HW1 的連桿尺寸與運動方式, 配置適當大小的旋轉軸以及基座後, 利用 Webots R2025a 完成一個簡單的平面四連桿機構模擬場景.</p>
-<p style="padding-left: 30px;">參考資料:</p>
-<p style="padding-left: 60px;"><a href="/downloads/fourbar_slvs.7z">fourbar_slvs.7z</a></p>
-<p>HW3 (20%):<span style="background-color: #ffff00;">建立 Webots 桌上籃球遊戲機模擬系統</span></p>
-<p style="padding-left: 30px;">請各分組利用CAD 系統建立一個能在電腦桌 (1600W X 700D X 740H mm) 上運作的投籃機構 (<a href="https://www.youtube.com/watch?v=LloG_Jn_TI0&amp;t=51s">參考影片</a>)後, 導入 Webots R2025a 套件, 建立一個能由使用者透過鍵盤按鍵操作, 且具備計分板的籃球遊戲機模擬系統.</p>
-<p style="padding-left: 30px;">參考資料:</p>
-<p>參考資料:</p>
-<p style="padding-left: 30px;"><a href="/downloads/fourbar_ball_throwing_linkage.slvs">fourbar_ball_throwing_linkage.slvs</a></p>
-<p style="padding-left: 30px;"><a href="/downloads/sixbar_ball_throwing_linkage.slvs">sixbar_ball_throwing_linkage.slvs</a></p>
-<p style="padding-left: 30px;"><img alt="" height="264" src="/images/fourbar_ball_throwing_linkage.gif" width="400"/></p><h2>HW1</h2>
-<p>HW1 (5%): <span style="background-color: #ffff00;">建立由 Box 組成的平面四連桿機構 Webots 模擬場景</span></p>
-<p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 HW1 - 學員學號</p>
-<p></p>
-<h2>HW2</h2>
-<p>HW2 (5%): <span style="background-color: #ffff00;">建立由 CAD 繪製零件組成的平面四連桿機構 Webots 模擬場景</span></p>
-<p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 HW2 - 學員學號</p>
-<p></p>
-<h2>HW3</h2>
-<p>HW3 (20%):<span style="background-color: #ffff00;">建立 Webots 桌上籃球遊戲機模擬系統</span></p>
-<p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 HW3 - 學員學號</p>
-<p></p>
-<h1>Midterm</h1>
-<p>本課程所繳交的期中成績為學員自評之學習期望成績.</p>
-<p>期中考週的自評期望成績繳交流程:</p>
-<ol>
-<li>整理先前所完成的各週的進度、作業網頁內容以及心得</li>
-<li>拍攝期中自評影片, 上傳至 Youtube 後, 以"<span style="background-color: #ffff00;">國立虎尾科技大學 - 機械設計工程系 - cd2025 期中自評- 學員學號</span>"為影片標題後嵌入本頁面中</li>
-<li>回填期中自評表單</li>
-<li>上傳學員期中成績</li>
-</ol>
-<p>各週進度:</p>
-<p>各週網頁內容:</p>
-<p>期中心得:</p>
-<p>期中自評影片:</p>
-<p></p>
-<p style="padding-left: 30px;"></p>
-<h1>Exam</h1>
-<p>Exam1 (10%): 建立 Webots 基本物件模擬場景</p>
-<p style="padding-left: 30px;">各學員利用 Webots R2025a 套件中的 Shape 物件, 隨堂建立指定的機電系統模擬場景, 並利用 Python 程式進行互動控制.</p>
-<p>Exam2 (10%): 利用 CAD 零組件建立模擬場景 </p>
-<p style="padding-left: 30px;">各學員利用 CAD (Solvespace 與 NX2312), 隨堂建立指定的系統模型零組件後, 導入 Webots R2025a 後, 建立機電系統模擬場景, 並利用 Python 程式進行互動控制.</p>
-<p>Exam3 (20%): Webots 機電模擬場景的協同設計</p>
-<p style="padding-left: 30px;">各分組利用 CAD (Solvespace 與 NX2312), 隨堂建立指定的系統模型零組件後, 導入 Webots R2025a 後, 建立機電系統模擬場景, 並利用 Python 程式進行互動控制. 過程中各學員必須採同步協同模式, 維護從 Github Classroom 取得的分組協同倉儲以及網站.</p>
-<p style="padding-left: 30px;">協同分組方式:</p>
-<ol>
-<li>分配學員負責利用 Solvespace 建立系統零組件, 過程中必須將所建構之零組件檔案與繪圖過程影片上傳至分組網頁.</li>
-<li>分配學員負責利用 NX2312 建立系統零組件, 過程中必須將所建構之零組件檔案與繪圖過程影片上傳至分組網頁.</li>
-<li>分配學員負責利用 Webots 建立機電系統模擬場景, 並利用 Python 程式進行控制, 過程中必須將建構過程拍成帶有說明字幕的影片上傳至分組網頁.</li>
-</ol>
-<h2>Exam1</h2>
-<p>Exam1 (10%): 建立 Webots 基本物件模擬場景</p>
-<p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 Exam1 - 學員學號</p>
-<h2>Exam2</h2>
-<p>Exam2 (10%): 利用 CAD 零組件建立模擬場景</p>
-<p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 Exam2 - 學員學號</p>
-<h2>Exam3</h2>
-<p>Exam3 (20%): Webots 機電模擬場景的協同設計</p>
-<p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 Exam3 - 學員學號</p>
-<h1>Final</h1>
-<p><span>期末協同專案執行過程影片、簡報與 PDf 報告檔案 (六人一組) (30%)</span></p>
-<p><span>題目: <span style="background-color: #ccffcc;">Webots 動態投籃模擬系統的協同設計</span></span></p>
-<p><span>說明: </span></p>
-<p style="padding-left: 30px;"><span>籃框架被配置在一定範圍內, 可隨機慢速前進、後退及左右擺動, 投籃機構系統帶有一定數量的籃球, 被配置在可自由移動的輪車上.</span></p>
-<p style="padding-left: 30px;"><span>操作者可利用鍵盤特定按鍵控制投籃輪車的移動並發射投籃, 每投出一球後系統透過記分板進行計分, 並由送球機構進行補球或移動輪車取球, 遊戲可進行至全部數量籃球投完為止.</span></p>
-<p>請將期末協同專案執行過程、內容與心得, 製作成影片，配合字幕上傳至 Youtube 後嵌入各階段的期末報告頁面中.</p>
-<p>影片標題: <span style="background-color: #ffff00;">國立虎尾科技大學 - 機械設計工程系 - cd2025 期末報告 - 學員學號 - 各階段影片主題<br/></span></p>
-<h1>Brython</h1>
-<p><button id="add1to100">1 add to 100</button></p>
-<!-- 導入 brython 程式庫 -->
-<p>
-<script src="/static/brython.js"></script>
-<script src="/static/brython_stdlib.js"></script>
-</p>
-<!-- 啟動 Brython -->
-<p>
-<script>
-window.onload=function(){
-brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
-}
-</script>
-</p>
-<p><!-- 導入 FileSaver 與 filereader --></p>
-<p>
-<script src="/static/ace/FileSaver.min.js" type="text/javascript"></script>
-<script src="/static/ace/filereader.js" type="text/javascript"></script>
-</p>
-<p><!-- 導入 ace --></p>
-<p>
-<script src="/static/ace/ace.js" type="text/javascript"></script>
-<script src="/static/ace/ext-language_tools.js" type="text/javascript"></script>
-<script src="/static/ace/mode-python3.js" type="text/javascript"></script>
-<script src="/static/ace/snippets/python.js" type="text/javascript"></script>
-</p>
-<p><!-- 導入 gearUtils-0.9.js Cango 齒輪繪圖程式庫 -->
-<script src="/static/Cango-24v03-min.js"></script>
-<script src="/static/gearUtils-09.js"></script>
-<script src="/static/SVGpathUtils-6v03-min.js"></script>
-<script src="/static/sylvester.js"></script>
-<script src="/static/PrairieDraw.js"></script>
-</p>
-<p><!-- 請注意, 這裡使用 Javascript 將 localStorage["kw_py_src1"] 中存在近端瀏覽器的程式碼, 由使用者決定存檔名稱--></p>
-<p>
-<script type="text/javascript">
-function doSave(storage_id, filename){
-    var blob = new Blob([localStorage[storage_id]], {type: "text/plain;charset=utf-8"});
-    filename = document.getElementById(filename).value
-    saveAs(blob, filename+".py");
-}
-</script>
-</p>
-<p>
-<script type="text/python3">
-from browser import document as doc
-import ace
-# 清除畫布
-def clear_bd1(ev):
-    bd = doc["brython_div1"]
-    bd.clear()
-Ace1 = ace.Editor(editor_id="kw_editor1", console_id="kw_console1", container_id="kw__container1", storage_id="kw_py_src1" )
-# 從 gist 取出程式碼後, 放入 editor 作為 default 程式
-def run1():
-    # 利用 get 取下 src 變數值
-    try:
-        url = doc.query["src"]
-    except:
-        url = "https://gist.githubusercontent.com/mdecourse/0229a8a017091476a79700b8a190f185/raw/c3a6deaf717f8f2739a4b1392a5ab10936e9693a/from_1_add_to_10_1.py"
-    prog = open(url).read()
-
-    # 將程式載入編輯區
-    Ace1.editor.setValue(prog)
-    Ace1.editor.scrollToRow(0)
-    Ace1.editor.gotoLine(0)
-    # 直接執行程式
-    #ns = {'__name__':'__main__'}
-    #exec(prog, ns)
-    # 按下 run 按鈕
-    Ace1.run()
-
-# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
-doc['kw_run1'].bind('click', Ace1.run)
-doc['kw_show_console1'].bind('click', Ace1.show_console)
-doc['kw_clear_console1'].bind('click', Ace1.clear_console)
-doc['clear_bd1'].bind('click', clear_bd1)
-# 呼叫函式執行
-run1()
-</script>
-</p>
-<p><!-- add 1 to 100 開始 -->
-<script type="text/python3">
-from browser import document as doc
-import ace
-
-# 清除畫布
-def clear_bd1(ev):
-    bd = doc["brython_div1"]
-    bd.clear()
-
-# 利用 ace 中的 Editor 建立 Ace2 物件, 其中的輸入變數分別對應到頁面中的編輯區物件
-Ace2 = ace.Editor(editor_id="kw_editor1", console_id="kw_console1", container_id="kw__container1", storage_id="kw_py_src1" )
-
-add1to100_url = "https://gist.githubusercontent.com/mdecourse/0229a8a017091476a79700b8a190f185/raw/c48e37714f055c3a0027cbfef59e442a6ef659b9/from_1_add_to_100_1.py"
-
-# 從 gist 取得程式碼
-add_src = open(add1to100_url).read()
-def add(ev):
-    Ace2.editor.setValue(add_src)
-    Ace2.editor.scrollToRow(0)
-    Ace2.editor.gotoLine(0)
-    Ace2.run()
-
-# id 為 "add1to100" 的按鈕點按時, 執行 add 方法
-doc["add1to100"].bind('click', add)
-</script>
-</p>
-<p><!-- add 1 to 100 結束--></p>
-<!-- editor1 開始 -->
-<p><!-- 用來顯示程式碼的 editor 區域 --></p>
-<div id="kw_editor1" style="width: 600px; height: 300px;"></div>
-<p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
-<p><!-- 存擋表單開始 --></p>
-<form><label>Filename: <input id="kw_filename" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src1', 'kw_filename1');" type="submit" value="Save"/></form>
-<p><!-- 存擋表單結束 --></p>
-<p></p>
-<p><!-- 執行與清除按鈕開始 --></p>
-<p><button id="kw_run1">Run</button> <button id="kw_show_console1">Output</button> <button id="kw_clear_console1">清除輸出區</button><button id="clear_bd1">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
-<p><!-- 執行與清除按鈕結束 --></p>
-<p></p>
-<p><!-- 程式執行 ouput 區 --></p>
-<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console1"></textarea></div>
-<p><!-- Brython 程式執行的結果, 都以 brython_div1 作為切入位置 --></p>
-<div id="brython_div1"></div>
-<!-- editor1 結束 --><hr/><!-- ########################################## -->
-<p>從 1 累加到 100 part2:</p>
-<p><button id="add1to100part2">1 add to 100</button><button id="cango_three_gears">cango_three_gears</button><button id="bsnake">BSnake</button><button id="aitetris">AI Tetris</button></p>
-<p><!-- 請注意, 這裡使用 Javascript 將 localStorage["kw_py_src2"] 中存在近端瀏覽器的程式碼, 由使用者決定存檔名稱--></p>
-<p>
-<script type="text/python3">
-from browser import document as doc
-import ace
-# 清除畫布
-def clear_bd2(ev):
-    bd = doc["brython_div2"]
-    bd.clear()
-Ace3 = ace.Editor(editor_id="kw_editor2", console_id="kw_console2", container_id="kw__container2", storage_id="kw_py_src2" )
-# 從 gist 取出程式碼後, 放入 editor 作為 default 程式
-def run2():
-    # 利用 get 取下 src 變數值
-    try:
-        url = doc.query["src2"]
-    except:
-        url = "https://gist.githubusercontent.com/mdecourse/0229a8a017091476a79700b8a190f185/raw/c3a6deaf717f8f2739a4b1392a5ab10936e9693a/from_1_add_to_10_1.py"
-    prog = open(url).read()
-
-    # 將程式載入編輯區
-    Ace3.editor.setValue(prog)
-    Ace3.editor.scrollToRow(0)
-    Ace3.editor.gotoLine(0)
-    # 直接執行程式
-    #ns = {'__name__':'__main__'}
-    #exec(prog, ns)
-    # 按下 run 按鈕
-    Ace3.run()
-
-# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
-doc['kw_run2'].bind('click', Ace3.run)
-doc['kw_show_console2'].bind('click', Ace3.show_console)
-doc['kw_clear_console2'].bind('click', Ace3.clear_console)
-doc['clear_bd2'].bind('click', clear_bd2)
-# 呼叫函式執行
-run2()
-</script>
-</p>
-<p><!-- add 1 to 100 part2 開始 -->
-<script type="text/python3">
-from browser import document as doc
-import ace
-
-# 清除畫布
-def clear_bd2(ev):
-    bd = doc["brython_div2"]
-    bd.clear()
-
-# 利用 ace 中的 Editor 建立 Ace2 物件, 其中的輸入變數分別對應到頁面中的編輯區物件
-Ace4 = ace.Editor(editor_id="kw_editor2", console_id="kw_console2", container_id="kw__container2", storage_id="kw_py_src2" )
-
-# 透過 Ace4 以類別建立一個通用的 button2, 可以在多個案例中將 gist 程導入編輯區
-
-class button2:
-    def __init__(self, url):
-        self.url = url
-
-    # 記得加入 event 輸入變數
-    def do(self,ev):
-        Ace4.editor.setValue(open(self.url).read())
-        Ace4.editor.scrollToRow(0)
-        Ace4.editor.gotoLine(0)
-        Ace4.run()
-
-add1to100_url = "https://gist.githubusercontent.com/mdecourse/0229a8a017091476a79700b8a190f185/raw/c48e37714f055c3a0027cbfef59e442a6ef659b9/from_1_add_to_100_1.py"
-
-# 從 gist 取得程式碼
-add_src = open(add1to100_url).read()
-def add2(ev):
-    Ace4.editor.setValue(add_src)
-    Ace4.editor.scrollToRow(0)
-    Ace4.editor.gotoLine(0)
-    Ace4.run()
-
-# id 為 "add1to100part2" 的按鈕點按時, 執行 add 方法
-doc["add1to100part2"].bind('click', add2)
-# 以下為運用 button2 class 的通用 gist 程式導入區
-################################## cango_three_gears start
-cango_three_gears_url = "https://gist.githubusercontent.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d/raw/f7a85d737d6723d5e34c526d5daee990ed92c32b/cango_three_gears_brython_div2.py"
-cango_three_gears = button2(cango_three_gears_url)
-doc["cango_three_gears"].bind("click", cango_three_gears.do)
-################################## cango_three_gears end
-################################## bsnake start
-bsnake_url = "https://gist.githubusercontent.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d/raw/f7a85d737d6723d5e34c526d5daee990ed92c32b/kmol_snakey.py"
-bsnake = button2(bsnake_url)
-doc["bsnake"].bind("click", bsnake.do)
-################################## bsnake end
-################################## aitetris start
-aitetris_url = "https://gist.githubusercontent.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d/raw/f7a85d737d6723d5e34c526d5daee990ed92c32b/pygame_to_brython_tetris_ai.py"
-aitetris = button2(aitetris_url)
-doc["aitetris"].bind("click", aitetris.do)
-################################## aitetris end
-</script>
-</p>
-<p><!-- add 1 to 100 part2 結束--></p>
-<!-- editor2 開始 -->
-<p><!-- 用來顯示程式碼的 editor 區域 --></p>
-<div id="kw_editor2" style="width: 600px; height: 300px;"></div>
-<p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
-<p><!-- 存擋表單開始 --></p>
-<form><label>Filename: <input id="kw_filename2" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src2', 'kw_filename2');" type="submit" value="Save"/></form>
-<p><!-- 存擋表單結束 --></p>
-<p></p>
-<p><!-- 執行與清除按鈕開始 --></p>
-<p><button id="kw_run2">Run</button> <button id="kw_show_console2">Output</button> <button id="kw_clear_console2">清除輸出區</button><button id="clear_bd2">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
-<p><!-- 執行與清除按鈕結束 --></p>
-<p></p>
-<p><!-- 程式執行 ouput 區 --></p>
-<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console2"></textarea></div>
-<p><!-- Brython 程式執行的結果, 都以 brython_div1 作為切入位置 --></p>
-<div id="brython_div2"></div>
-<!-- editor2 結束 --><hr/>
-<p>
-<script src="https://unpkg.com/three@0.144.0/build/three.js" type="text/javascript"></script>
-</p>
+</div><br />task4 查驗是否有學員加入錯誤的班級組別 << <a href='task4 查驗是否有學員加入錯誤的班級組別.html'>Previous</a> <a href='Homework.html'>Next</a> >> Homework</div>
+        
+    <!-- footer -->
+      <div class="container">
+        <div class="row pt-3 mx-auto">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    <!-- for footer -->
+    
+        </div> <!-- for site wrap -->
+            <!-- <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script> -->
+            <script src="../cmsimde/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery-ui.js"></script>
+            <script src="../cmsimde/static/chimper/js/popper.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/owl.carousel.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.stellar.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.countdown.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.magnific-popup.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap-datepicker.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/aos.js"></script>
+            <!--
+            <script src="../cmsimde/static/chimper/js/typed.js"></script>
+                    <script>
+                    var typed = new Typed('.typed-words', {
+                    strings: ["Web Apps"," WordPress"," Mobile Apps"],
+                    typeSpeed: 80,
+                    backSpeed: 80,
+                    backDelay: 4000,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true
+                    });
+                    </script>
+            -->
+            <script src="../cmsimde/static/chimper/js/main.js"></script>
+        
+<!-- 啟用 LaTeX equations 編輯 -->
+  <!-- <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\(', '\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>-->
+    </body></html>
+        

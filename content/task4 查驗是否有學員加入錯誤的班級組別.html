@@ -142,11 +142,51 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Homework << <a href='Homework.html'>Previous</a> <a href='HW2.html'>Next</a> >> HW2<br /><h1>HW1</h1>
-<p>HW1 (5%): <span style="background-color: #ffff00;">建立由 Box 組成的平面四連桿機構 Webots 模擬場景</span></p>
-<p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 HW1 - 學員學號</p>
-<p></p>
-<br />Homework << <a href='Homework.html'>Previous</a> <a href='HW2.html'>Next</a> >> HW2</div>
+    <div id="tipue_search_content">task3 使用 Solvespace 建立平面四連桿系統零組件 << <a href='task3 使用 Solvespace 建立平面四連桿系統零組件.html'>Previous</a> <a href='task5 Webots Tutorial.html'>Next</a> >> task5 Webots Tutorial<br /><h1>task4 查驗是否有學員加入錯誤的班級組別</h1>
+<p>因為上列程式已經給出兩班當時已經參與分組的學員 Github 帳號, 因此只需要從<span> </span><a href="https://mde.tw/list/2b.txt">https://mde.tw/list/2b.txt</a> 讀取學員的學號與 Github 帳號, 並且在 for 迴圈中, 逐一用學員的 Github 帳號相對於各班已經參與分組的學員 Github 帳號, 並且列出特定學員的 Github 帳號不在前述已經參與分組的學員帳號數列中, 即可列出截至當時尚未那組的學員學號.</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">import requests
+
+# Step 1: 下載甲班學員資料
+url = "https://mde.tw/list/2a.txt"
+response = requests.get(url)
+data = response.text.splitlines()
+
+# Step 2: 去除標題列
+all_stud = data[1:]
+
+# Step 3: 甲班已知 GitHub 名單
+a_all_members = [
+    '41223154', '41271125', '41271158', '41271146', '41271131', 'CYG41223103',
+    '41223102', '41023128', '41023137', '41223137', '41223157', '41223156',
+    'otakuyoyo', '41223141', '41223113', 'kim41223114', 'joeisme1208', '41223116',
+    '41223144', '41223140', '41223143', '41223138', '41223134', '41223136',
+    'zhe41223118', 'Spirit0224', 'yuhao-08', '41223158', 'Ren911308', '41223150',
+    'Manto8', 'CYA41223106', 'yan21ed', 'Lin41223107', '41223133', 'hong41223129',
+    '41223110', '41223147', 'Linjiahong41223125', 'CHN41223132', 'Yu-Fang-Hong',
+    '41023111', 'yckaooooo', 'kolas911205', '41023105', '40932134', '41223104',
+    'yan41223101', '41223105', '41223153', '41223120', '41223152', 'G8People',
+    'WSE41223112', '41223146', '41223119'
+]
+
+# Step 4: 篩選缺少 GitHub 的學號
+missing = []
+
+print("甲班：")
+for i in all_stud:
+    stud = i.strip().split("\t")
+    stud_num = stud[0]
+    stud_github = stud[1]
+    if stud_github not in a_all_members:
+        print(stud_num)
+        missing.append(stud_num)
+
+# Step 5: 儲存結果到檔案
+with open("missing_github_2a.txt", "w", encoding="utf-8") as f:
+    f.write("以下同學的 GitHub 未在名單中：\n")
+    for stud_num in missing:
+        f.write(f"{stud_num}\n")
+</pre>
+<br />task3 使用 Solvespace 建立平面四連桿系統零組件 << <a href='task3 使用 Solvespace 建立平面四連桿系統零組件.html'>Previous</a> <a href='task5 Webots Tutorial.html'>Next</a> >> task5 Webots Tutorial</div>
         
     <!-- footer -->
       <div class="container">

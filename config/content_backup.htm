@@ -345,11 +345,57 @@ while robot.step(timestep) != -1:
 </ul>
 </li>
 </ol>
-<h1>task</h1>
+<h2>w6</h2>
+<p><span>請注意, <span style="background-color: #ff9900;">所有 world 的存檔必須要將模擬時間轉為 0</span></span>, 否則所存的變數狀態將為該時間的模擬結果.</p>
+<p><a href="https://cyberbotics.com/doc/guide/tutorial-1-your-first-simulation-in-webots?tab-language=python">Tutorial 1</a><span> </span>重點摘要:</p>
+<p>將 <a href="http://229.cycu.org/Webots_2025a_web.7z">Webots_2025a_web.7z</a> 解開壓縮後放入可攜套件 (<a href="http://229.cycu.org/portable_wcm2025.7z">portable_wcm2025.7z</a>) 的 data 目錄中.</p>
+<p>因為 start.bat 中已經宣告 Python 所在位置, 並將執行 webotsw.exe 所在的目錄放入 Windows 的命令搜尋路徑變數中 (path).</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">REM for Webots
+set PYTHON_PATH=%Disk%:\Python313
+ 
+REM for webots
+set  path_webots=%Disk%:\Webots_2025a\msys64\mingw64\bin;%Disk%:\Webots_2025a\msys64\usr\bin</pre>
+<p><span>當起始一個 Webots project, 需要至少建立 worlds、controllers、protos 等三個目錄, 而且 Robot 的</span><span>控制器程式必須放入 controllers 目錄, 且控制程式檔名必須與子目錄相同</span><span>.</span></p>
+<h2>w7</h2>
+<ol>
+<li>各 Solid - Shape - geometry 在建立 open chain 機構時, 可以在尚未設定 physics 之前單軸運轉, 但 Webots 牽涉需要模擬 closed chain 機構時, 各 Solid - Shape -geometry 則必須設定 boundingObject 與 physics 才能透過 solidReference 進行 dynamics 聯立運算. 亦即 Webots 在模擬封閉機構時, 只能處理 Dynamics 模擬, 原因是其模擬運算是從<span> </span><a href="https://www.ode.org/">ODE</a><span> </span>動力程式庫修改而來, 並沒有附加 closed chain 的 kinematics 運算.</li>
+<li>當個別 link 採 box 建立時, 為了要符合其 kinematics 運動約束條件, 各桿件的起始條件必須滿足 fourbar linkage 的約束條件, 因此只有 link1 旋轉 90 度, 可以在 x 與 y 軸同動的情況下無需透 pose 進行局部座標轉換, 但 link2 與 link3 在納入 Shape 之前必須立 pose 節點置入額外的座標轉換.</li>
+<li>各 link 的 boundingObject 欄位, 可以透過其 link Shape 採 USE 的方式重用.</li>
+<li>最後 joint4 的旋轉中心則透過 solidReference 與 link3 的端點座標重合, 才能完成 closed chain 的動力約束條件模擬</li>
+</ol>
+<p>     <span style="color: #000000; background-color: #ff9900;">下載檔案 : <span style="background-color: #ffffff;"><a href="/downloads/41223158 fourbar_shooter_w7.7z" style="background-color: #ffffff;">/downloads/41223158 fourbar_shooter_w7.7z</a></span></span></p>
+<p><span style="color: #000000; background-color: #ff9900;"><span style="background-color: #ffffff;"><img alt="" height="290" src="/images/螢幕擷取畫面 2025-04-24 044532.png" width="465"/></span></span></p>
+<p> <span style="background-color: #ff9900;">投球機零件影片 : </span></p>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/4wOPzQfoPic" width="560"></iframe></p>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/J3EfwDlwDJw" width="560"></iframe></p>
+<p><span style="background-color: #ff9900;">投球機組合件 : <span style="background-color: #ffffff;"></span></span></p>
+<p><span style="background-color: #ff9900;"><span style="background-color: #ffffff;"><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/xo4yxNbMaAk" width="560"></iframe></span></span></p>
+<h2>w8</h2>
+<p class="" data-end="107" data-start="49"><span> 複習 </span><a href="https://cyberbotics.com/doc/reference/solidreference">SolidReference</a><span> </span> 是一種引用類型，用於 <code data-end="84" data-start="77">Joint</code> 節點的 <code data-end="99" data-start="89">endPoint</code> 欄位，可指向：</p>
+<ol data-end="208" data-start="109">
+<li class="" data-end="163" data-start="109">
+<p class="" data-end="163" data-start="112"><span style="background-color: #ff9900;"><strong data-end="124" data-start="112">現有 Solid</strong></span>：例如機械零件，但必須與該 Joint 同屬某個共同上層 Solid 的後代。</p>
+</li>
+<li class="" data-end="208" data-start="164">
+<p class="" data-end="208" data-start="167"><strong data-end="198" data-start="167">靜態環境 <code data-end="196" data-start="174">&lt;static environment&gt;</code></strong>：如地面或固定基座。</p>
+</li>
+</ol>
+<p class="" data-end="219" data-start="210"><strong data-end="219" data-start="210"><span style="background-color: #ff9900;">應用說明</span>：</strong></p>
+<ul data-end="433" data-start="221">
+<li class="" data-end="334" data-start="221">
+<p class="" data-end="334" data-start="223">若在 <span style="background-color: #ff9900;"><strong data-end="245" data-start="226">fourbar linkage</strong></span> 中，將 <code data-end="258" data-start="250">joint4</code> 設於 base 的最右端，並將其 <code data-end="286" data-start="276">endPoint</code> 指向 <code data-end="297" data-start="290">link3</code>，則符合「joint 與 solid 為共同上層 base 的後代」條件。</p>
+</li>
+<li class="" data-end="433" data-start="335">
+<p class="" data-end="433" data-start="337">或者，將 <code data-end="350" data-start="342">joint4</code> 設於 <code data-end="361" data-start="354">link3</code> 末端，並讓其 <code data-end="379" data-start="369">endPoint</code> 指向 <code data-end="405" data-start="383">&lt;static environment&gt;</code>，則可將 <code data-end="417" data-start="410">link3</code> 固定於地面，達成相同閉合效果。</p>
+</li>
+</ul>
+<h2>w9</h2>
+<p><span>本週統整先前所完成的進度內容，並拍成自己的yt影片，自評期望成績並填寫表單。</span></p><h1>task</h1>
 <p>目錄:</p>
 <p>     <b><i>1. </i></b><span>task1 (自行製作可攜程式系統)</span></p>
 <p>    <em> 2. </em>task2 使用 SSH 協定執行作業倉儲的推送</p>
-<p>     3. task3 使用 Solvespace 建立平面四連桿系統零組件</p><h3>task1 (自行製作可攜程式系統)</h3>
+<p>     3. task3 使用 Solvespace 建立平面四連桿系統零組件</p>
+<p>     4.task4 查驗是否有學員加入錯誤的班級組別</p><h3>task1 (自行製作可攜程式系統)</h3>
 <p><span>此作業的目的在展示如何利用既有的 Python 可攜系統建立各版本的 Python 可攜環境.影片如下 :</span></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/qdga364f-9k" width="560"></iframe></p>
 <p></p><h2>task2(使用 SSH 協定執行作業倉儲的推送)</h2>
@@ -361,10 +407,56 @@ while robot.step(timestep) != -1:
 <p><span><img alt="" height="399" src="/images/螢幕擷取畫面 2025-04-11 154323.png" width="623"/></span></p>
 <h2>task3 使用 Solvespace 建立平面四連桿系統零組件</h2>
 <p>下載檔案 : <a href="/downloads/fourbar41223158_slvs.zip">/downloads/fourbar41223158_slvs.zip</a></p>
-<p></p>
+<p><img alt="" height="294" src="/images/螢幕擷取畫面 2025-04-24 044614.png" width="471"/></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/fnbHD_yTbd8" width="560"></iframe></p>
-<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/oz9I75hMxlI" width="560"></iframe></p><h1>Homework</h1>
-<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/qdga364f-9k" width="560"></iframe></p>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/oz9I75hMxlI" width="560"></iframe></p>
+<p></p>
+<h2>task4 查驗是否有學員加入錯誤的班級組別</h2>
+<p>因為上列程式已經給出兩班當時已經參與分組的學員 Github 帳號, 因此只需要從<span> </span><a href="https://mde.tw/list/2b.txt">https://mde.tw/list/2b.txt</a> 讀取學員的學號與 Github 帳號, 並且在 for 迴圈中, 逐一用學員的 Github 帳號相對於各班已經參與分組的學員 Github 帳號, 並且列出特定學員的 Github 帳號不在前述已經參與分組的學員帳號數列中, 即可列出截至當時尚未那組的學員學號.</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">import requests
+
+# Step 1: 下載甲班學員資料
+url = "https://mde.tw/list/2a.txt"
+response = requests.get(url)
+data = response.text.splitlines()
+
+# Step 2: 去除標題列
+all_stud = data[1:]
+
+# Step 3: 甲班已知 GitHub 名單
+a_all_members = [
+    '41223154', '41271125', '41271158', '41271146', '41271131', 'CYG41223103',
+    '41223102', '41023128', '41023137', '41223137', '41223157', '41223156',
+    'otakuyoyo', '41223141', '41223113', 'kim41223114', 'joeisme1208', '41223116',
+    '41223144', '41223140', '41223143', '41223138', '41223134', '41223136',
+    'zhe41223118', 'Spirit0224', 'yuhao-08', '41223158', 'Ren911308', '41223150',
+    'Manto8', 'CYA41223106', 'yan21ed', 'Lin41223107', '41223133', 'hong41223129',
+    '41223110', '41223147', 'Linjiahong41223125', 'CHN41223132', 'Yu-Fang-Hong',
+    '41023111', 'yckaooooo', 'kolas911205', '41023105', '40932134', '41223104',
+    'yan41223101', '41223105', '41223153', '41223120', '41223152', 'G8People',
+    'WSE41223112', '41223146', '41223119'
+]
+
+# Step 4: 篩選缺少 GitHub 的學號
+missing = []
+
+print("甲班：")
+for i in all_stud:
+    stud = i.strip().split("\t")
+    stud_num = stud[0]
+    stud_github = stud[1]
+    if stud_github not in a_all_members:
+        print(stud_num)
+        missing.append(stud_num)
+
+# Step 5: 儲存結果到檔案
+with open("missing_github_2a.txt", "w", encoding="utf-8") as f:
+    f.write("以下同學的 GitHub 未在名單中：\n")
+    for stud_num in missing:
+        f.write(f"{stud_num}\n")
+</pre>
+<h2>task5 Webots Tutorial</h2><h1>Homework</h1>
+<p></p>
 <p>作業 (30%)</p>
 <p>HW1 (5%): <span style="background-color: #ffff00;">建立由 Box 組成的平面四連桿機構 Webots 模擬場景</span></p>
 <p style="padding-left: 30px;">part1:</p>
@@ -390,8 +482,7 @@ while robot.step(timestep) != -1:
 <p>參考資料:</p>
 <p style="padding-left: 30px;"><a href="/downloads/fourbar_ball_throwing_linkage.slvs">fourbar_ball_throwing_linkage.slvs</a></p>
 <p style="padding-left: 30px;"><a href="/downloads/sixbar_ball_throwing_linkage.slvs">sixbar_ball_throwing_linkage.slvs</a></p>
-<p style="padding-left: 30px;"><img alt="" height="264" src="/images/fourbar_ball_throwing_linkage.gif" width="400"/></p>
-<h2>HW1</h2>
+<p style="padding-left: 30px;"><img alt="" height="264" src="/images/fourbar_ball_throwing_linkage.gif" width="400"/></p><h2>HW1</h2>
 <p>HW1 (5%): <span style="background-color: #ffff00;">建立由 Box 組成的平面四連桿機構 Webots 模擬場景</span></p>
 <p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 HW1 - 學員學號</p>
 <p></p>
