@@ -421,7 +421,9 @@ set  path_webots=%Disk%:\Webots_2025a\msys64\mingw64\bin;%Disk%:\Webots_2025a\ms
 <p><span>12. 接下來若要利用各組員所分配的 </span><a href="https://mde.tw/cd2025/content/IPv6.html">IPv6 位址</a><span>配置一台具備 https 連線用的網際協同伺服器, 建議使用 Virtualbox 或 </span><a href="https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion">VMWare Workstation</a><span> 加上 Nginx, Stunnel 或直接採 cmsimde 進行設定.</span></p>
 <p><span>13. 投籃機與籃框的移動裝置則可採用 <a href="https://www.cyberbotics.com/doc/guide/youbot?version=cyberbotics:R2019a-rev1#!">Kuka 套件項下</a>的 <a href="https://mde.tw/cd2025/content/Youbot_cart.html">Youbot</a> <a href="https://en.wikipedia.org/wiki/Mecanum_wheel">Mecanum</a> 輪底座.</span></p>
 <p>14. <span style="background-color: #99cc00;">(參考)</span> 對於 webotsw --stream 在近端啟動伺服器的部分尚未完成, 目前僅能透過官方網站擷取 Webotsview.js, 具體問題在於 webots 串流伺服器啟動後, 不接受跨網域擷取 Webotsview.js, 亦即必須處理伺服器間的 Access-Control-Allow-Origin（CORS）議題. 自行<span> </span><a href="https://github.com/cyberbotics/webots/wiki/Windows-installation/">build webotsw.exe</a><span> </span>應該就可以克服此一問題.</p>
-<p>15. <span style="background-color: #99cc00;">(參考)</span> 另外 Webots stream server 目前僅接受多 client 檢視, 而不支援跨 server 執行 controller 指令, 若要在系統模擬架構下進行多人同步協同 (類似 CoppeliaSim 的串流控制), 則必須自行處理.</p><h1>task</h1>
+<p>15. <span style="background-color: #99cc00;">(參考)</span> 另外 Webots stream server 目前僅接受多 client 檢視, 而不支援跨 server 執行 controller 指令, 若要在系統模擬架構下進行多人同步協同 (類似 CoppeliaSim 的串流控制), 則必須自行處理.</p>
+<p></p>
+<h2>w11</h2><h1>task</h1>
 <p>目錄:</p>
 <p>     <b><i>1. </i></b><span>task1 (自行製作可攜程式系統)</span></p>
 <p>    <em> 2. </em>task2 使用 SSH 協定執行作業倉儲的推送</p>
