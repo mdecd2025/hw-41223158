@@ -142,18 +142,120 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">組員作業 << <a href='組員作業.html'>Previous</a> <a href='w7.html'>Next</a> >> w7<br /><h1>w6</h1>
-<p><span>請注意, <span style="background-color: #ff9900;">所有 world 的存檔必須要將模擬時間轉為 0</span></span>, 否則所存的變數狀態將為該時間的模擬結果.</p>
-<p><a href="https://cyberbotics.com/doc/guide/tutorial-1-your-first-simulation-in-webots?tab-language=python">Tutorial 1</a><span> </span>重點摘要:</p>
-<p>將 <a href="http://229.cycu.org/Webots_2025a_web.7z">Webots_2025a_web.7z</a> 解開壓縮後放入可攜套件 (<a href="http://229.cycu.org/portable_wcm2025.7z">portable_wcm2025.7z</a>) 的 data 目錄中.</p>
-<p>因為 start.bat 中已經宣告 Python 所在位置, 並將執行 webotsw.exe 所在的目錄放入 Windows 的命令搜尋路徑變數中 (path).</p>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">REM for Webots
-set PYTHON_PATH=%Disk%:\Python313
- 
-REM for webots
-set  path_webots=%Disk%:\Webots_2025a\msys64\mingw64\bin;%Disk%:\Webots_2025a\msys64\usr\bin</pre>
-<p><span>當起始一個 Webots project, 需要至少建立 worlds、controllers、protos 等三個目錄, 而且 Robot 的</span><span>控制器程式必須放入 controllers 目錄, 且控制程式檔名必須與子目錄相同</span><span>.</span></p>
-<br />組員作業 << <a href='組員作業.html'>Previous</a> <a href='w7.html'>Next</a> >> w7</div>
+    <div id="tipue_search_content">Blender << <a href='Blender.html'>Previous</a> <a href='Homework.html'>Next</a> >> Homework<br /><h1>task6 Webots Tutorial 4 ~6 (HW3)</h1>
+<p>Webots 串流伺服器操作</p>
+<ul data-end="413" data-start="148">
+<li class="" data-end="241" data-start="148">
+<h4 data-end="159" data-start="150"><strong data-end="159" data-start="150">啟動指令：</strong></h4>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">webotsw --stream
+webotsw 是啟動 Webots 的指令，--stream 開啟串流伺服器功能。</pre>
+<ul data-end="413" data-start="148">
+<li class="" data-end="261" data-start="243">
+<p class="" data-end="261" data-start="245"><strong data-end="254" data-start="245">預設埠號：</strong> <code data-end="261" data-start="255">1234</code></p>
+</li>
+<li class="" data-end="331" data-start="263">
+<p class="" data-end="331" data-start="265"><strong data-end="275" data-start="265">推薦瀏覽器：</strong> 在 Windows 系統中，建議使用 <strong data-end="313" data-start="295">Microsoft Edge</strong>，因為其 WebGL2 相容性較好。</p>
+</li>
+<li class="" data-end="413" data-start="333">
+<p class="" data-end="344" data-start="335"><strong data-end="344" data-start="335">連線網址：</strong></p>
+<ul data-end="413" data-start="347">
+<li class="" data-end="375" data-start="347">
+<p class="" data-end="375" data-start="349">本機查看：<a class="" data-end="375" data-start="354" href="http://localhost:1234" rel="noopener" target="_new">http://localhost:1234</a></p>
+</li>
+<li class="" data-end="413" data-start="378">
+<p class="" data-end="413" data-start="380">遠端查看：http://stream_server_ip:1234</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr class="" data-end="418" data-start="415"/>
+<h4 data-end="443" data-start="420">🧾 如何在串流中顯示記分板與計時器？</h4>
+<p class="" data-end="494" data-start="445">Webots 內建的 <code data-end="465" data-start="456">Display</code> 元件 <strong data-end="483" data-start="469">無法透過串流畫面顯示</strong>，因此需改用以下方式：</p>
+<h4 class="" data-end="537" data-start="496">✅ 方案：使用 7 段顯示器 (<code data-end="536" data-start="517">7 Segment Display</code>)</h4>
+<ul data-end="848" data-start="539">
+<li class="" data-end="580" data-start="539">
+<p class="" data-end="580" data-start="541">將數字拆成 7 個段（a ~ g），每一段是一個 Mesh（.obj 檔案）。</p>
+</li>
+<li class="" data-end="640" data-start="581">
+<p class="" data-end="640" data-start="583">利用 <code data-end="592" data-start="586">.obj</code> 建模好的段件（來自 <code data-end="621" data-start="603">score_counter.7z</code>）以 <code data-end="631" data-start="624">Shape</code> 方式放入場景中。</p>
+</li>
+<li class="" data-end="848" data-start="641">
+<p class="" data-end="648" data-start="643">實作方式：</p>
+<ol data-end="848" data-start="651">
+<li class="" data-end="690" data-start="651">
+<p class="" data-end="690" data-start="654">使用 <code data-end="679" data-start="657">Solid → Shape → Mesh</code> 放入各段（a~g）。</p>
+</li>
+<li class="" data-end="722" data-start="693">
+<p class="" data-end="722" data-start="696">每段的 <code data-end="705" data-start="700">url</code> 指向對應的 <code data-end="718" data-start="712">.obj</code> 檔案。</p>
+</li>
+<li class="" data-end="792" data-start="725">
+<p class="" data-end="792" data-start="728">使用 controller（C/C++/Python）透過 <strong data-end="766" data-start="758">改變顏色</strong>（e.g., 顯示紅色表示亮起）來控制段件是否顯示。</p>
+</li>
+<li class="" data-end="848" data-start="795">
+<p class="" data-end="848" data-start="798">利用 <code data-end="813" data-start="801">Supervisor</code> 模式來控制這些物件的 appearance（顏色）以反映分數或時間。</p>
+</li>
+</ol>
+</li>
+</ul>
+<hr class="" data-end="853" data-start="850"/>
+<h4 data-end="873" data-start="855">🎮 操作示範 (鍵盤互動)</h4>
+<ul data-end="962" data-start="875">
+<li class="" data-end="904" data-start="875">
+<p class="" data-end="904" data-start="877">範例檔案：<code data-end="904" data-start="882">7_segment_display.7z</code></p>
+</li>
+<li class="" data-end="962" data-start="905">
+<p class="" data-end="962" data-start="907">使用鍵盤按鍵 <code data-end="917" data-start="914">r</code>, <code data-end="922" data-start="919">b</code>, <code data-end="927" data-start="924">y</code>, <code data-end="932" data-start="929">g</code> 來切換顯示器中 <code data-end="946" data-start="941">f 段</code> 的顏色，作為控制段顯示的示範。</p>
+</li>
+</ul>
+<hr class="" data-end="967" data-start="964"/>
+<h4 data-end="981" data-start="969">🗂 附檔與用途</h4>
+<div class="_tableContainer_16hzy_1">
+<div class="_tableWrapper_16hzy_14 group flex w-fit flex-col-reverse" tabindex="-1">
+<table class="w-fit min-w-(--thread-content-width)" data-end="1183" data-start="983">
+<thead data-end="1033" data-start="983">
+<tr data-end="1033" data-start="983">
+<th data-col-size="sm" data-end="1005" data-start="983">檔名</th>
+<th data-col-size="sm" data-end="1033" data-start="1005">說明</th>
+</tr>
+</thead>
+<tbody data-end="1183" data-start="1089">
+<tr data-end="1139" data-start="1089">
+<td data-col-size="sm" data-end="1113" data-start="1089"><code data-end="1109" data-start="1091">score_counter.7z</code></td>
+<td data-col-size="sm" data-end="1139" data-start="1113">7 段顯示器的 Mesh 模型檔案（a~g）</td>
+</tr>
+<tr data-end="1183" data-start="1140">
+<td data-col-size="sm" data-end="1164" data-start="1140"><code data-end="1164" data-start="1142">7_segment_display.7z</code></td>
+<td data-col-size="sm" data-end="1183" data-start="1164">示範場景，可使用鍵盤互動</td>
+</tr>
+</tbody>
+</table>
+<div class="sticky end-(--thread-content-margin) h-0 self-end select-none">
+<div class="absolute end-0 flex items-end"><span class="" data-state="closed"><button class="bg-token-bg-primary hover:bg-token-bg-tertiary text-token-text-secondary my-1 rounded-sm p-1 transition-opacity group-[:not(:hover):not(:focus-within)]:pointer-events-none group-[:not(:hover):not(:focus-within)]:opacity-0"><svg class="icon-md-heavy" fill="none" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M7 5C7 3.34315 8.34315 2 10 2H19C20.6569 2 22 3.34315 22 5V14C22 15.6569 20.6569 17 19 17H17V19C17 20.6569 15.6569 22 14 22H5C3.34315 22 2 20.6569 2 19V10C2 8.34315 3.34315 7 5 7H7V5ZM9 7H14C15.6569 7 17 8.34315 17 10V15H19C19.5523 15 20 14.5523 20 14V5C20 4.44772 19.5523 4 19 4H10C9.44772 4 9 4.44772 9 5V7ZM5 9C4.44772 9 4 9.44772 4 10V19C4 19.5523 4.44772 20 5 20H14C14.5523 20 15 19.5523 15 19V10C15 9.44772 14.5523 9 14 9H5Z" fill="currentColor" fill-rule="evenodd"></path></svg></button></span></div>
+</div>
+</div>
+</div>
+<hr class="" data-end="1188" data-start="1185"/>
+<h4 data-end="1202" data-start="1190">✅ 建議工作流程</h4>
+<ol data-end="1394" data-start="1204">
+<li class="" data-end="1250" data-start="1204">
+<p class="" data-end="1250" data-start="1207">解壓並匯入 <code data-end="1219" data-start="1213">.wbt</code> 場景與 <code data-end="1230" data-start="1224">.obj</code> 模型檔案至你的 Webots 專案中。</p>
+</li>
+<li class="" data-end="1291" data-start="1251">
+<p class="" data-end="1291" data-start="1254">確保每個 <code data-end="1266" data-start="1259">Shape</code> 指向對應的 <code data-end="1280" data-start="1273">a.obj</code> ~ <code data-end="1290" data-start="1283">g.obj</code>。</p>
+</li>
+<li class="" data-end="1328" data-start="1292">
+<p class="" data-end="1328" data-start="1295">在 controller 中寫入邏輯，依照分數變化控制段件的顏色。</p>
+</li>
+<li class="" data-end="1365" data-start="1329">
+<p class="" data-end="1365" data-start="1332">使用 <code data-end="1347" data-start="1335">Supervisor</code> 控制所有段件（或整個顯示器）狀態。</p>
+</li>
+<li class="" data-end="1394" data-start="1366">
+<p class="" data-end="1394" data-start="1369">測試串流功能，確認遠端瀏覽器能看到正確的顯示結果。</p>
+</li>
+</ol>
+<h4 data-end="159" data-start="150"><br/><br/></h4>
+</li>
+</ul><br />Blender << <a href='Blender.html'>Previous</a> <a href='Homework.html'>Next</a> >> Homework</div>
         
     <!-- footer -->
       <div class="container">
