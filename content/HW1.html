@@ -151,7 +151,34 @@ img.add_border {
 <p><span> 4.如果還是看不懂步驟及影片，可以點擊 <a href="https://mde.tw/cd2025/content/Fourbar.html">Fourbar</a>的老師教學。</span></p>
 <p>下載檔案 : <a href="./../downloads/41223158 cd2025_webots_hw1.7z">/downloads/41223158 cd2025_webots_hw1.7z</a></p>
 <p><img alt="" height="272" src="./../images/螢幕擷取畫面 2025-05-02 140244.png" width="483"/></p>
-<p><span><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/3KheDx4XnQo" width="560"></iframe></span></p><br />Homework << <a href='Homework.html'>Previous</a> <a href='Tutorial1.html'>Next</a> >> Tutorial1</div>
+<p><span><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/3KheDx4XnQo" width="560"></iframe></span></p>
+<p></p>
+<p><span style="background-color: #ffff99;">5.四連桿未轉動的原因如下 (請看影片): </span></p>
+<p><span style="background-color: #ffff99;">需要將程式帶入 : </span></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">from controller import Robot
+
+def run_robot():
+    # Create the Robot instance
+    robot = Robot()
+
+    # Get simulation time step
+    timestep = int(robot.getBasicTimeStep())
+
+    # Get motor device
+    motor = robot.getDevice('motor')
+
+    # Set motor for continuous rotation
+    motor.setPosition(float('inf'))
+    motor.setVelocity(1.0)
+
+    # Main control loop
+    while robot.step(timestep) != -1:
+        pass
+
+if __name__ == "__main__":
+    run_robot()</pre>
+<p><span style="background-color: #ffff99;"><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/qcg1s7WiyW4" width="560"></iframe></span></p>
+<p><span style="background-color: #ffff99;"></span></p><br />Homework << <a href='Homework.html'>Previous</a> <a href='Tutorial1.html'>Next</a> >> Tutorial1</div>
         
     <!-- footer -->
       <div class="container">
