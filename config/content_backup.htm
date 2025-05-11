@@ -1378,6 +1378,39 @@ if __name__ == "__main__":
 <p>HW2 (5%): <span style="background-color: #ffff00;">建立由 CAD 繪製零件組成的平面四連桿機構 Webots 模擬場景</span></p>
 <p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 HW2 - 學員學號</p>
 <p>下載檔案 : <a href="/downloads/fourbar41223158_HW2.7z">/downloads/fourbar41223158_HW2.7z</a></p>
+<p><span style="background-color: #00ffff;">分割stl成obj檔指令 :</span></p>
+<p><span style="background-color: #00ffff;"></span></p>
+<p><span style="background-color: #00ffff;">Webots旋轉指令 :</span></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">from controller import Robot
+
+def run_robot():
+    # Create the Robot instance
+    robot = Robot()
+
+    # Get simulation time step
+    timestep = int(robot.getBasicTimeStep())
+
+    # Get motor device
+    motor1 = robot.getDevice('joint_motor1')
+    #motor2 = robot.getDevice('joint_motor2')
+    #motor3 = robot.getDevice('joint_motor3')
+
+    # Set motor for continuous rotation
+    motor1.setPosition(float('inf'))
+    motor1.setVelocity(1.0)
+    """
+    motor2.setPosition(float('inf'))
+    motor2.setVelocity(1.0)
+    motor3.setPosition(float('inf'))
+    motor3.setVelocity(1.0)
+    """
+
+    # Main control loop
+    while robot.step(timestep) != -1:
+        pass
+
+if __name__ == "__main__":
+    run_robot()</pre>
 <h4>1.是用<span style="background-color: #ffff00;">cadshape</span>的無顏色下去組合及模擬。</h4>
 <p><img alt="" height="343" src="/images/螢幕擷取畫面 2025-05-11 231932.png" width="550"/></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/nRGVDIsQhrk" width="560"></iframe></p>
