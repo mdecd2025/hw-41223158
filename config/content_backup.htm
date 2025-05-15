@@ -1381,233 +1381,6 @@ if __name__ == "__main__":
 <p><span style="background-color: #00ffff;">分割stl成obj檔指令 :</span></p>
 <p><span style="background-color: #ffffff;">按go，出現<span style="background-color: #00ffff;">spit_parts資料夾</span>才是成功轉成obj，也才可以跟Webots做配合。</span></p>
 <p><span style="background-color: #ffffff;"><img alt="" height="314" src="/images/螢幕擷取畫面 2025-05-12 011555.png" width="535"/></span></p>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-"""
-Created on: 2025-02-09 15:40:51 UTC
-Author: mdecycu
-Description: STL file converter that splits STL files into multiple OBJ files with MTL materials
-"""
-
-import struct
-import numpy as np
-from pathlib import Path
-
-class STLConverter:
-    def __init__(self, filename, scale=0.001):  # 新增 scale 參數，預設 0.001 將 mm 轉換為 m
-        self.filename = filename
-        self.scale = scale
-        self.is_binary = self._check_if_binary()
-        
-    def _check_if_binary(self):
-        """檢查 STL 檔案是否為二進制格式"""
-        with open(self.filename, 'rb') as f:
-            header = f.read(5).decode('utf-8', errors='ignore')
-            return not header.startswith('solid')
-    
-    def _read_binary_stl(self):
-        """讀取二進制 STL 檔案"""
-        with open(self.filename, 'rb') as f:
-            f.seek(80)
-            triangle_count = struct.unpack('I', f.read(4))[0]
-            
-            triangles = []
-            normals = []
-            
-            for _ in range(triangle_count):
-                nx, ny, nz = struct.unpack('fff', f.read(12))
-                normals.append([nx, ny, nz])
-                
-                triangle = []
-                for _ in range(3):
-                    x, y, z = struct.unpack('fff', f.read(12))
-                    # 在讀取頂點時進行縮放
-                    triangle.append([x * self.scale, y * self.scale, z * self.scale])
-                triangles.append(triangle)
-                
-                f.seek(2, 1)
-                
-        return np.array(triangles), np.array(normals)
-    
-    def _read_ascii_stl(self):
-        """讀取 ASCII STL 檔案"""
-        triangles = []
-        normals = []
-        current_triangle = []
-        
-        with open(self.filename, 'r') as f:
-            for line in f:
-                line = line.strip()
-                if not line:
-                    continue
-                    
-                parts = line.split()
-                if not parts:
-                    continue
-                
-                if parts[0] == 'facet' and parts[1] == 'normal':
-                    normals.append([float(parts[2]), float(parts[3]), float(parts[4])])
-                elif parts[0] == 'vertex':
-                    # 在讀取頂點時進行縮放
-                    current_triangle.append([
-                        float(parts[1]) * self.scale,
-                        float(parts[2]) * self.scale,
-                        float(parts[3]) * self.scale
-                    ])
-                elif parts[0] == 'endfacet':
-                    if current_triangle:
-                        triangles.append(current_triangle)
-                        current_triangle = []
-        
-        return np.array(triangles), np.array(normals)
-    
-    def _split_by_connected_components(self, triangles, normals):
-        """使用連通分量分割模型"""
-        vertex_to_triangle = {}
-        for i, triangle in enumerate(triangles):
-            for vertex in triangle:
-                vertex_tuple = tuple(vertex)
-                if vertex_tuple in vertex_to_triangle:
-                    vertex_to_triangle[vertex_tuple].append(i)
-                else:
-                    vertex_to_triangle[vertex_tuple] = [i]
-        
-        visited = set()
-        components = []
-        
-        def dfs(triangle_idx):
-            component = []
-            stack = [triangle_idx]
-            
-            while stack:
-                current = stack.pop()
-                if current not in visited:
-                    visited.add(current)
-                    component.append(current)
-                    
-                    for vertex in triangles[current]:
-                        vertex_tuple = tuple(vertex)
-                        for neighbor in vertex_to_triangle[vertex_tuple]:
-                            if neighbor not in visited:
-                                stack.append(neighbor)
-            
-            return component
-        
-        for i in range(len(triangles)):
-            if i not in visited:
-                component = dfs(i)
-                components.append(component)
-        
-        return components
-    
-    def _write_binary_stl(self, filename, triangles, normals):
-        """寫入二進制 STL 檔案"""
-        with open(filename, 'wb') as f:
-            f.write(b'\x00' * 80)
-            f.write(struct.pack('I', len(triangles)))
-            
-            for triangle, normal in zip(triangles, normals):
-                f.write(struct.pack('fff', *normal))
-                for vertex in triangle:
-                    f.write(struct.pack('fff', *vertex))
-                f.write(struct.pack('H', 0))
-
-    def _write_mtl(self, filename, material_name):
-        """寫入 MTL 材質檔案"""
-        with open(filename, 'w', encoding='utf-8') as f:
-            f.write(f"newmtl {material_name}\n")
-            f.write("Ka 0.2 0.2 0.2\n")  # Ambient color
-            f.write("Kd 0.8 0.8 0.8\n")  # Diffuse color
-            f.write("Ks 0.5 0.5 0.5\n")  # Specular color
-            f.write("Ns 50.0\n")         # Specular exponent
-            f.write("d 1.0\n")           # Transparency (1.0 = opaque)
-            f.write("illum 2\n")         # Illumination model
-
-    def _write_obj(self, filename, triangles, normals):
-        """寫入 OBJ 檔案"""
-        vertex_dict = {}
-        vertex_list = []
-        normal_list = []
-        faces = []
-        
-        for triangle, normal in zip(triangles, normals):
-            face_indices = []
-            
-            for vertex in triangle:
-                vertex_tuple = tuple(vertex)
-                if vertex_tuple not in vertex_dict:
-                    vertex_dict[vertex_tuple] = len(vertex_list) + 1
-                    vertex_list.append(vertex)
-                face_indices.append(vertex_dict[vertex_tuple])
-            
-            normal_list.append(normal)
-            faces.append(face_indices)
-        
-        # Generate material name from the obj filename
-        material_name = filename.stem
-        # Create MTL filename using Path
-        mtl_filename = filename.with_suffix('.mtl')
-        
-        # Write OBJ file
-        with open(filename, 'w', encoding='utf-8') as f:
-            # Reference the MTL file
-            f.write(f"mtllib {mtl_filename.name}\n")
-            f.write(f"usemtl {material_name}\n\n")
-            
-            for v in vertex_list:
-                f.write(f"v {v[0]} {v[1]} {v[2]}\n")
-            
-            for n in normal_list:
-                f.write(f"vn {n[0]} {n[1]} {n[2]}\n")
-            
-            for i, face in enumerate(faces):
-                f.write(f"f {face[0]}//{i+1} {face[1]}//{i+1} {face[2]}//{i+1}\n")
-        
-        # Write the corresponding MTL file
-        self._write_mtl(mtl_filename, material_name)
-    
-    def split_and_convert(self):
-        """分割 STL 檔案並轉換為 OBJ 格式"""
-        if self.is_binary:
-            triangles, normals = self._read_binary_stl()
-        else:
-            triangles, normals = self._read_ascii_stl()
-        
-        components = self._split_by_connected_components(triangles, normals)
-        
-        output_dir = Path('split_parts')
-        output_dir.mkdir(exist_ok=True)
-        
-        for i, component in enumerate(components):
-            component_triangles = triangles[component]
-            component_normals = normals[component]
-            
-            base_name = f"part_{i + 1}"
-            stl_filename = output_dir / f"{base_name}.stl"
-            obj_filename = output_dir / f"{base_name}.obj"
-            
-            #self._write_binary_stl(stl_filename, component_triangles, component_normals)
-            self._write_obj(obj_filename, component_triangles, component_normals)
-            
-            print(f"已儲存零件 {i + 1} 到:")
-            #print(f"  STL: {stl_filename}")
-            print(f"  OBJ: {obj_filename}")
-            print(f"  MTL: {obj_filename.with_suffix('.mtl')}")
-        
-        return len(components)
-
-# 直接轉換指定的 STL 檔案
-try:
-    # 指定要轉換的 STL 檔案名稱和縮放比例
-    stl_file = "41223158 fourbar.stl( 改成你的檔名)"
-    scale = 0.01  # 縮放比例，可以根據需要調整
-
-    # 創建轉換器實例並執行轉換
-    converter = STLConverter(stl_file, scale=scale)
-    num_parts = converter.split_and_convert()
-    print(f"\n總共處理了 {num_parts} 個零件")
-except Exception as e:
-    print(f"錯誤: {e}")</pre>
 <p><span style="background-color: #00ffff;">Webots旋轉指令 :</span></p>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">from controller import Robot
 
@@ -1655,7 +1428,32 @@ if __name__ == "__main__":
 <p>HW3 (20%):<span style="background-color: #ffff00;">建立 Webots 桌上籃球遊戲機模擬系統</span></p>
 <p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 HW3 - 學員學號</p>
 <p><span style="background-color: #00ffff;">下載檔案 :</span> <a href="/downloads/41223158 fourbar_shooter_w7.7z">/downloads/41223158 fourbar_shooter_w7.7z</a></p>
-<p>程式跟<span style="background-color: #ff9900;"><a href="https://mdecd2025.github.io/hw-41223158/content/HW2.html" style="background-color: #ff9900;">HW2</a></span>一樣的做法下去做，<span style="background-color: #ccffff;">假如要分開做的話，要記得將籃框的sti與</span><span><span style="background-color: #ccffff;">桌上籃球遊戲機sti分開執行</span>。</span></p>
+<h4><span style="background-color: #00ccff;">桌上籃球遊戲機球場下載檔案 : <span style="background-color: #ffffff;"><a href="/downloads/41223158 fourbar_shooter_w7-1.7z" style="background-color: #ffffff;">/downloads/41223158 fourbar_shooter_w7-1.7z</a></span></span></h4>
+<p>分開的指令程式跟<span style="background-color: #ff9900;"><a href="https://mdecd2025.github.io/hw-41223158/content/HW2.html" style="background-color: #ff9900;">HW2</a></span>一樣的做法下去做，<span style="background-color: #ccffff;">假如要分開做的話，要記得將籃框的sti與</span><span><span style="background-color: #ccffff;">桌上籃球遊戲機sti分開執行</span>。</span></p>
+<p><span style="background-color: #99ccff;">桌上籃球遊戲機模擬系統程式 : </span></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">from controller import Robot
+
+def run_robot():
+    # Create the Robot instance
+    robot = Robot()
+
+    # Get simulation time step
+    timestep = int(robot.getBasicTimeStep())
+
+    # Get motor and keyboard devices
+    motor = robot.getDevice('motor1')
+    keyboard = robot.getKeyboard()
+    keyboard.enable(timestep)
+
+    # Set initial motor position
+    initial_position = 0.0  # Assuming initial position is 0
+
+    # Main control loop
+    while robot.step(timestep) != -1:
+        motor.setPosition(38 * 3.14159 / 180)
+
+if __name__ == "__main__":
+    run_robot()</pre>
 <h4><span style="background-color: #ccffff;">1.桌上籃球遊戲機</span></h4>
 <p><img alt="" height="323" src="/images/螢幕擷取畫面 2025-04-24 044532.png" width="517"/></p>
 <p><img alt="" height="308" src="/images/螢幕擷取畫面 2025-05-15 172703.png" width="519"/></p>
@@ -1666,7 +1464,14 @@ if __name__ == "__main__":
 <p><img alt="" height="308" src="/images/螢幕擷取畫面 2025-05-15 172639.png" width="522"/></p>
 <h4><span style="background-color: #ccffff;">4.影片觀賞:</span></h4>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/h0CSQY61Ru8" width="560"></iframe></p>
-<p></p><h1>Midterm</h1>
+<p></p>
+<h4><span style="background-color: #ccffff;">桌上籃球遊戲機球場</span></h4>
+<p><span style="background-color: #ffffff;"><span style="background-color: #ccffff;"><span style="background-color: #ffffff;">將執行原本的程式</span>motor.setPosition(38 * 3.14159 / 180)</span>&gt;更改成<span style="background-color: #ccffff;">motor.setPosition(28 * 3.14159 / 180)</span>合適的距離。</span></p>
+<p><span style="background-color: #ccffff;"><img alt="" height="331" src="/images/螢幕擷取畫面 2025-05-15 224834.png" width="531"/></span></p>
+<p><span style="background-color: #ccffff;"><img alt="" height="315" src="/images/螢幕擷取畫面 2025-05-15 224746.png" width="530"/></span></p>
+<p><span style="background-color: #ccffff;"></span></p>
+<h4><span style="background-color: #ccffff;">影片觀賞:</span></h4>
+<p><span style="background-color: #ccffff;"><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/ORBRW3pLvRA" width="560"></iframe></span></p><h1>Midterm</h1>
 <p>本課程所繳交的期中成績為學員自評之學習期望成績.</p>
 <p>期中考週的自評期望成績繳交流程:</p>
 <ol>

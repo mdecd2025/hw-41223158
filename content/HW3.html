@@ -147,7 +147,31 @@ img.add_border {
 <p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 HW3 - 學員學號</p>
 <p><span style="background-color: #00ffff;">下載檔案 :</span> <a href="./../downloads/41223158 fourbar_shooter_w7.7z">/downloads/41223158 fourbar_shooter_w7.7z</a></p>
 <h4><span style="background-color: #00ccff;">桌上籃球遊戲機球場下載檔案 : <span style="background-color: #ffffff;"><a href="./../downloads/41223158 fourbar_shooter_w7-1.7z" style="background-color: #ffffff;">/downloads/41223158 fourbar_shooter_w7-1.7z</a></span></span></h4>
-<p>程式跟<span style="background-color: #ff9900;"><a href="https://mdecd2025.github.io/hw-41223158/content/HW2.html" style="background-color: #ff9900;">HW2</a></span>一樣的做法下去做，<span style="background-color: #ccffff;">假如要分開做的話，要記得將籃框的sti與</span><span><span style="background-color: #ccffff;">桌上籃球遊戲機sti分開執行</span>。</span></p>
+<p>分開的指令程式跟<span style="background-color: #ff9900;"><a href="https://mdecd2025.github.io/hw-41223158/content/HW2.html" style="background-color: #ff9900;">HW2</a></span>一樣的做法下去做，<span style="background-color: #ccffff;">假如要分開做的話，要記得將籃框的sti與</span><span><span style="background-color: #ccffff;">桌上籃球遊戲機sti分開執行</span>。</span></p>
+<p><span style="background-color: #99ccff;">桌上籃球遊戲機模擬系統程式 : </span></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">from controller import Robot
+
+def run_robot():
+    # Create the Robot instance
+    robot = Robot()
+
+    # Get simulation time step
+    timestep = int(robot.getBasicTimeStep())
+
+    # Get motor and keyboard devices
+    motor = robot.getDevice('motor1')
+    keyboard = robot.getKeyboard()
+    keyboard.enable(timestep)
+
+    # Set initial motor position
+    initial_position = 0.0  # Assuming initial position is 0
+
+    # Main control loop
+    while robot.step(timestep) != -1:
+        motor.setPosition(38 * 3.14159 / 180)
+
+if __name__ == "__main__":
+    run_robot()</pre>
 <h4><span style="background-color: #ccffff;">1.桌上籃球遊戲機</span></h4>
 <p><img alt="" height="323" src="./../images/螢幕擷取畫面 2025-04-24 044532.png" width="517"/></p>
 <p><img alt="" height="308" src="./../images/螢幕擷取畫面 2025-05-15 172703.png" width="519"/></p>
@@ -160,6 +184,7 @@ img.add_border {
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/h0CSQY61Ru8" width="560"></iframe></p>
 <p></p>
 <h4><span style="background-color: #ccffff;">桌上籃球遊戲機球場</span></h4>
+<p><span style="background-color: #ffffff;"><span style="background-color: #ccffff;"><span style="background-color: #ffffff;">將執行原本的程式</span>motor.setPosition(38 * 3.14159 / 180)</span>&gt;更改成<span style="background-color: #ccffff;">motor.setPosition(28 * 3.14159 / 180)</span>合適的距離。</span></p>
 <p><span style="background-color: #ccffff;"><img alt="" height="331" src="./../images/螢幕擷取畫面 2025-05-15 224834.png" width="531"/></span></p>
 <p><span style="background-color: #ccffff;"><img alt="" height="315" src="./../images/螢幕擷取畫面 2025-05-15 224746.png" width="530"/></span></p>
 <p><span style="background-color: #ccffff;"></span></p>
