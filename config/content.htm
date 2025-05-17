@@ -1510,8 +1510,40 @@ if __name__ == "__main__":
 </ol>
 <h2>Exam1</h2>
 <p>Exam1 (10%): 建立 Webots 基本物件模擬場景</p>
-<p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 Exam1 - 學員學號</p>
-<h2>Exam2</h2>
+<p><span style="background-color: #ffff99;">操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 Exam1 - 學員學號</span></p>
+<p><span style="background-color: #ffff99;">1.檔案下載 :</span> <a href="/downloads/41223158 cd2025_webots_Exam1.7z">/downloads/41223158 cd2025_webots_Exam1.7z</a></p>
+<p><span style="background-color: #ffff99;"><span style="background-color: #ffffff;">  </span>Solvespace 檔案下載 : <span style="background-color: #ffffff;"><a href="/downloads/41223158 Solvespace Exam1.7z" style="background-color: #ffffff;">/downloads/41223158 Solvespace Exam1.7z</a></span></span></p>
+<p><span style="background-color: #ffff99;">2.角度單位換算網址 : <span style="background-color: #ffffff;"><a href="https://www.mecalculator.tw/zh-tw/calculators/conversion/angle" style="background-color: #ffffff;">https://www.mecalculator.tw/zh-tw/calculators/conversion/angle</a></span></span></p>
+<p><span>利用<span style="background-color: #ffff99;"> Solvespace 繪製當紅色連桿旋轉角度為個人學號最後兩碼時 (單位為 degree)</span> 的線架構圖, 並將此角度作為四連桿的起始旋轉角度.<span style="background-color: #ffff99;">比如58</span></span><span style="background-color: #ffff99;">degree轉1.01229<span class="input-group-text border-0 border-bottom rounded-0 bg-white gray-800 fs-14 px-1">rad，剩下的rad</span>弧度自己設計的大概。</span></p>
+<p><span style="background-color: #ffff99;">程式利用 : <span style="background-color: #ffffff;"></span></span></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">from controller import Robot
+ 
+def run_robot():
+    # Create the Robot instance
+    robot = Robot()
+ 
+    # Get simulation time step
+    timestep = int(robot.getBasicTimeStep())
+ 
+    # Get motor device
+    motor = robot.getDevice('motor')
+ 
+    # Set motor for continuous rotation
+    motor.setPosition(float('inf'))
+    motor.setVelocity(1.0)
+ 
+    # Main control loop
+    while robot.step(timestep) != -1:
+        pass
+ 
+if __name__ == "__main__":
+    run_robot()</pre>
+<p><span style="background-color: #ffff99;"><span style="background-color: #ffffff;"> </span></span></p>
+<p><span style="background-color: #ffff99;"><img alt="" height="312" src="/images/螢幕擷取畫面 2025-05-17 164838.png" width="523"/></span></p>
+<p><span style="background-color: #ffff99;"><img alt="" height="315" src="/images/螢幕擷取畫面 2025-05-17 164825.png" width="532"/></span></p>
+<p><span style="background-color: #ffff99;">2.影片操作 : </span></p>
+<p><span style="background-color: #ffff99;"><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/X8qwqdYLmfY" width="560"></iframe></span></p>
+<p><span style="background-color: #ffff99;"><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/Av5kqbqFZ4U" width="560"></iframe></span></p><h2>Exam2</h2>
 <p>Exam2 (10%): 利用 CAD 零組件建立模擬場景</p>
 <p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 Exam2 - 學員學號</p>
 <h2>Exam3</h2>
