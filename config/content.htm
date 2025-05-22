@@ -1549,7 +1549,39 @@ if __name__ == "__main__":
 <p><span style="background-color: #ffff99;"><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/Av5kqbqFZ4U" width="560"></iframe></span></p><h2>Exam2</h2>
 <p>Exam2 (10%): 利用 CAD 零組件建立模擬場景</p>
 <p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 Exam2 - 學員學號</p>
-<h2>Exam3</h2>
+<p><span style="background-color: #ccffff;">下載檔案 : <span style="color: #000000; background-color: #ffffff;"><a href="/downloads/41223158_Exam2.7z" style="color: #000000; background-color: #ffffff;">/downloads/41223158_Exam2.7z</a></span></span></p>
+<p><span style="background-color: #ccffff;"><span style="color: #000000; background-color: #ffffff;"><span style="background-color: #ccffff;">在自己的點位找到自己的xyz軸</span>，JOINT1(0、0、0)、<span>JOINT2(0.8373、1.3399、0)、JOINT3(1.97、2.71、0)、JOINT3(3、0、0)</span></span></span></p>
+<p><span style="background-color: #ccffff;"><span style="color: #000000;">程式需要帶入以下 : </span></span></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">from controller import Robot
+
+def run_robot():
+    # Create the Robot instance
+    robot = Robot()
+
+    # Get simulation time step
+    timestep = int(robot.getBasicTimeStep())
+
+    # Get motor device
+    motor = robot.getDevice('motor')
+
+    # Set motor for continuous rotation
+    motor.setPosition(float('inf'))
+    motor.setVelocity(1.0)
+
+    # Main control loop
+    while robot.step(timestep) != -1:
+        pass
+
+if __name__ == "__main__":
+    run_robot()</pre>
+<p><span style="background-color: #ccffff;"><span style="color: #000000;">solvespace座標 : </span></span></p>
+<p><span style="background-color: #ccffff;"><span style="color: #000000; background-color: #ffffff;"><img alt="" height="304" src="/images/螢幕擷取畫面 2025-05-17 231727.png" width="511"/></span></span></p>
+<p><span style="background-color: #ccffff;"><span style="color: #000000;">Webots模擬 : </span></span></p>
+<p><span style="background-color: #ccffff;"><span style="color: #000000; background-color: #ffffff;"><img alt="" height="302" src="/images/螢幕擷取畫面 2025-05-22 170647.png" width="510"/></span></span></p>
+<p><span style="background-color: #ccffff;"><span style="color: #000000;">影片觀看 : </span></span></p>
+<p><span style="background-color: #ccffff;"><span style="color: #000000;"><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/L6t0GKeyNMs" width="560"></iframe></span></span></p>
+<p><span style="background-color: #ccffff;"><span style="color: #000000;"><span>修正影片觀看 : </span></span></span></p>
+<p><span style="background-color: #ccffff;"><span style="color: #000000;"><span><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/THVkgyb_jbE" width="560"></iframe></span></span></span></p><h2>Exam3</h2>
 <p>Exam3 (20%): Webots 機電模擬場景的協同設計</p>
 <p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 Exam3 - 學員學號</p>
 <h1>Final</h1>
