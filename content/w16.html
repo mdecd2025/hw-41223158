@@ -142,72 +142,12 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w1 << <a href='w1.html'>Previous</a> <a href='w4.html'>Next</a> >> w4<br /><h1>w3</h1>
-<h4>用程式計算出班上與別班未分組名單，已本班甲班2a為主。</h4>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">import os
-from github import Github
-
-# 設定 GitHub Token 與組織名稱
-GITHUB_TOKEN = 'your_token'  # 🚨 請換成你的 GitHub Token
-ORG_NAME = 'mdecd2025'
-PROXY = 'http://p4.cycu.org:3128'
-
-# 班上所有學號
-all_students = {
-    "40932134", "41023105", "41023109", "41023111", "41023128", "41023137", "41023150", "41023220", "41023222",
-    "41223101", "41223102", "41223103", "41223104", "41223105", "41223106", "41223107", "41223110", "41223111",
-    "41223112", "41223113", "41223114", "41223116", "41223117", "41223118", "41223119", "41223120", "41223121",
-    "41223122", "41223123", "41223124", "41223125", "41223126", "41223129", "41223130", "41223131", "41223132",
-    "41223133", "41223134", "41223136", "41223137", "41223138", "41223140", "41223141", "41223143", "41223144",
-    "41223146", "41223147", "41223148", "41223149", "41223150", "41223152", "41223153", "41223154", "41223156",
-    "41223157", "41223158", "41271125", "41271131", "41271146", "41271158"
-}
-a_all_members = ['41223154', '41271125', '41271158', '41271146', '41271131', 'CYG41223103', '41223102', '41023128', '41023137', '41223137', '41223157', '41223156', 'otakuyoyo', '41223141', '41223113', 'kim41223114', 'joeisme1208', '41223116', '41223144', '41223140', '41223143', '41223138', '41223134', '41223136', 'zhe41223118', 'Spirit0224', 'yuhao-08', '41223158', 'Ren911308', '41223150', 'Manto8', 'CYA41223106', 'yan21ed', 'Lin41223107', '41223133', 'hong41223129', '41223110', '41223147', 'Linjiahong41223125', 'CHN41223132', 'Yu-Fang-Hong', '41023111', 'yckaooooo', 'kolas911205', '41023105', '40932134', '41223104', 'yan41223101', '41223105', '41223153', '41223120', '41223152', 'G8People', 'WSE41223112', '41223146', '41223119']
-def get_grouped_members(org_name, token, proxy):
-    """從 GitHub 獲取已分組的成員"""
-    os.environ['http_proxy'] = proxy
-    os.environ['https_proxy'] = proxy
-
-    g = Github(token)
-    grouped_members = set()
-
-    try:
-        org = g.get_organization(org_name)
-        teams = org.get_teams()
-
-        for team in teams:
-            if team.name.lower().startswith('g'):
-                members = team.get_members()
-                for member in members:
-                    grouped_members.add(member.login)
-
-    except Exception as e:
-        print(f"An error occurred: {e}")
-
-    return grouped_members
-
-if __name__ == "__main__":
-    # 取得 GitHub 上的已分組成員
-    grouped_students = get_grouped_members(ORG_NAME, GITHUB_TOKEN, PROXY)
-
-    # 計算未分組的學號
-    ungrouped_students = sorted(all_students - grouped_students)
-
-    # 📌 只輸出未分組學號
-    for student in ungrouped_students:
-        print(student)
-</pre>
-<div class="line number1 index0 alt2">
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">未分組學號：
-41023220 | 未分組
-41223111 | 未分組
-41223119 | 未分組
-41223124 | 未分組
-41223148 | 未分組
-</pre>
-<code class="html plain"></code></div>
-<div class="line number1 index0 alt2"><code class="html plain"></code></div>
-<br />w1 << <a href='w1.html'>Previous</a> <a href='w4.html'>Next</a> >> w4</div>
+    <div id="tipue_search_content">w12 << <a href='w12.html'>Previous</a> <a href='task.html'>Next</a> >> task<br /><h1>w16</h1>
+<p><span>hw1 link3驅動桿長度改為1m</span></p>
+<p><span></span></p>
+<p><span><img alt="" height="389" src="./../images/solvespace_yMKGRoPixA.png" width="800"/></span></p>
+<p><span><img alt="" height="437" src="./../images/webots-bin_TFFhxMFDMu.png" width="800"/></span></p>
+<p><span>下載檔案 : <a href="./../downloads/41223158 cd2025_w16.zip">/downloads/41223158 cd2025_w16.zip</a></span></p><br />w12 << <a href='w12.html'>Previous</a> <a href='task.html'>Next</a> >> task</div>
         
     <!-- footer -->
       <div class="container">
